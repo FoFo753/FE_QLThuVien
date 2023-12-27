@@ -13,12 +13,12 @@
     <nav class="navbar navbar-expand-xl w-100">
         <ul class="navbar-nav justify-content-start flex-grow-1 gap-1">
             <li class="nav-item">
-                <router-link to="/admin/mon-hoc">
-                    <a href="/admin/mon-hoc" class="nav-link">
+                <router-link to="/admin">
+                    <a href="/admin" class="nav-link">
                         <div class="parent-icon">
-                            <i class="fa-solid fa-list"></i>
+                            <i class="fa-solid fa-user-tie"></i>
                         </div>
-                        <div class="menu-title">Môn Học</div>
+                        <div class="menu-title">Admin</div>
                     </a>
                 </router-link>
             </li>

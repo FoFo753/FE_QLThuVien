@@ -22,6 +22,26 @@
                     </a>
                 </router-link>
             </li>
+            <li class="nav-item">
+                <router-link to="/admin/cuoc-thi">
+                    <a href="/admin" class="nav-link">
+                        <div class="parent-icon">
+                            <i class="fa-solid fa-user-tie"></i>
+                        </div>
+                        <div class="menu-title">Bài Thi</div>
+                    </a>
+                </router-link>
+            </li>
+            <li class="nav-item">
+                <router-link to="/admin/mon-hoc">
+                    <a href="/admin" class="nav-link">
+                        <div class="parent-icon">
+                            <i class="fa-solid fa-user-tie"></i>
+                        </div>
+                        <div class="menu-title">Môn Học</div>
+                    </a>
+                </router-link>
+            </li>
         </ul>
     </nav>
 </div>

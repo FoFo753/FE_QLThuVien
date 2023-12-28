@@ -117,7 +117,7 @@
                             <div class="modal-dialog">
                                 <div class="modal-content">
                                     <div class="modal-header">
-                                        <h1 class="modal-title fs-5" id="chinhSuaLabel">Modal title</h1>
+                                        <h1 class="modal-title fs-5" id="chinhSuaLabel">Chỉnh sửa Admin</h1>
                                         <button type="button" class="btn-close" data-bs-dismiss="modal"
                                             aria-label="Close"></button>
                                     </div>
@@ -165,9 +165,9 @@
                                         </div>
                                     </div>
                                     <div class="modal-footer">
-                                        <button type="button" class="btn btn-outline-secondary px-5 radius-30"
+                                        <button type="button" class="btn btn-outline-secondary px-5 radius-30 close"
                                             data-bs-dismiss="modal">Đóng</button>
-                                        <button @click="updateAdmin()" type="button" class="btn btn-outline-success px-5 radius-30">Xác Nhận</button>
+                                        <button  @click="updateAdmin()" type="button" class="btn btn-outline-success px-5 radius-30">Xác Nhận</button>
                                     </div>
                                 </div>
                             </div>
@@ -176,7 +176,7 @@
                             <div class="modal-dialog">
                                 <div class="modal-content">
                                     <div class="modal-header">
-                                        <h1 class="modal-title fs-5" id="xoaLabel">Modal title</h1>
+                                        <h1 class="modal-title fs-5" id="xoaLabel">Xoá Admin</h1>
                                         <button type="button" class="btn-close" data-bs-dismiss="modal"
                                             aria-label="Close"></button>
                                     </div>
@@ -202,7 +202,7 @@
                                         </div>
                                     </div>
                                     <div class="modal-footer">
-                                        <button type="button" class="btn btn-outline-secondary px-5 radius-30"
+                                        <button type="button" class="btn btn-outline-secondary px-5 radius-30 close"
                                             data-bs-dismiss="modal">Đómg</button>
                                         <button @click="deleteAdmin()" type="button" class="btn btn-outline-danger px-5 radius-30">Xoá</button>
                                     </div>
@@ -257,7 +257,8 @@ export default {
                 .then((res) => {
                     if (res.data.status == true) {
                         toaster.success('Thông báo<br>' + res.data.message);
-                        this.loadDataAdmin();
+                        this.loadDataAdmin()       
+                        $("#xoa .close").click()                 
                     }
                     else {
                         toaster.danger('Thông báo<br>' + res.data.message);
@@ -271,6 +272,7 @@ export default {
                     if (res.data.status == true) {
                         toaster.success('Thông báo<br>' + res.data.message);
                         this.loadDataAdmin();
+                        $("#chinhSua .close").click()
                     } else {
                         toaster.danger('Thông báo<br>' + res.data.message);
                     }

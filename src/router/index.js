@@ -32,6 +32,10 @@ const routes = [
     path: "/admin",
     component: () => import("../components/Admin/index.vue"),
   },
+  {
+    path: "/admin/cuoc-thi",
+    component: () => import("../components/CuocThi/index.vue"),
+  },
 
   {
     path: "/admin/mon-hoc",

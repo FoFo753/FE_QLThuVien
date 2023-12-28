@@ -33,6 +33,12 @@ const routes = [
     component: () => import("../components/Admin/index.vue"),
   },
 
+  {
+    path: "/admin/mon-hoc",
+    component: () => import("../components/MonHoc/index.vue"),
+  },
+
+
 ];
 
 const router = createRouter({

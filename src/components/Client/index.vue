@@ -93,8 +93,8 @@
                             <th>{{ v.ngay_sinh }}</th>
                             <th>{{ v.id_truong }}</th>
                             <th>
-                                <button class="btn btn-outline-success bg-success text-white">Hoạt động</button>
-                                <!-- <button class="btn btn-outline-warning bg-warning text-white">Tạm Ngưng</button> -->
+                                <button @:click="doiTrangThai(v)" v-if="v.tinh_trang == 1" class="btn btn-outline-success ">Hoạt động</button>
+                                <button  @:click="doiTrangThai(v)" v-else class="btn btn-outline-warning ">Tạm Ngưng</button>
                             </th>
                             <th>
                                 <div class="row">
@@ -248,6 +248,18 @@ export default {
                     }
                 });
         },
+        doiTrangThai(doi) {
+            axios
+                .put('http://127.0.0.1:8000/api/client/doi-trang-thai', doi)
+                .then((res) =>  {
+                    if(res.data.status == true) {
+                        toaster.success('Thông báo<br>' + res.data.message);
+                        this.loadDataClient();
+                    } else {
+                        toaster.error(res.data.message);
+                    }
+                });
+        }
     },
     
 }

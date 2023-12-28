@@ -26,8 +26,9 @@ const routes = [
 //  //admin
   {
     path: "/admin/mon-hoc",
-    component: () => import("../components/Admin/MonHoc/index.vue"),
+    component: () => import("../components/MonHoc/index.vue"),
   },
+
 
 ];
 

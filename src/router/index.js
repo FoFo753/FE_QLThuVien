@@ -37,6 +37,11 @@ const routes = [
     path: "/admin/mon-hoc",
     component: () => import("../components/MonHoc/index.vue"),
   },
+  {
+    path: "/admin/lop-dang-ki",
+    component: () => import("../components/LopDangKi/index.vue"),
+  },
+  
 
 
 ];

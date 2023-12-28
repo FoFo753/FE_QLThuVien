@@ -22,6 +22,36 @@
                     </a>
                 </router-link>
             </li>
+            <li class="nav-item">
+                <router-link to="/admin/mon-hoc">
+                    <a href="/admin/mon-hoc" class="nav-link">
+                        <div class="parent-icon">
+                            <i class="fa-solid fa-user-tie"></i>
+                        </div>
+                        <div class="menu-title">Môn Học</div>
+                    </a>
+                </router-link>
+            </li>
+            <li class="nav-item">
+                <router-link to="/admin/client">
+                    <a href="/admin/client" class="nav-link">
+                        <div class="parent-icon">
+                            <i class="fa-solid fa-user-tie"></i>
+                        </div>
+                        <div class="menu-title">Client</div>
+                    </a>
+                </router-link>
+            </li>
+            <li class="nav-item">
+                <router-link to="/admin/lop-dang-ki">
+                    <a href="/admin/lop-dang-ki" class="nav-link">
+                        <div class="parent-icon">
+                            <i class="fa-solid fa-user-tie"></i>
+                        </div>
+                        <div class="menu-title">Lớp Học</div>
+                    </a>
+                </router-link>
+            </li>
         </ul>
     </nav>
 </div>

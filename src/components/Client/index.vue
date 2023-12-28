@@ -6,6 +6,12 @@
                     <div class="col">
                         <b class="text-info">Thông Tin Client</b>
                     </div>
+                    <div class="col-6">
+                                <div class="input-group">
+                                    <input v-on:keyup.enter="saerchClient()" v-model="tim_kiem.abc" type="text" class="form-control" placeholder="Nhập Môn cần tìm" aria-label="Recipient's username" aria-describedby="button-addon2">
+                                    <button v-on:click="saerchClient()" class="btn btn-outline-info" type="button" id="button-addon2" ><i class="fa-solid fa-magnifying-glass"></i></button>
+                                </div>
+                            </div>
                     <div class="col text-end">
                         <i v-on:click="Object.assign(create_client, v)"  class="fa-solid fa-plus radius-30 mt-2 mt-lg-0 text-info" data-bs-toggle="modal" data-bs-target="#themModal" type="button"></i>
                     </div>
@@ -42,7 +48,7 @@
                                     </div>
                                     <div class="col-6 mb-2">
                                         <label class="form-label">Ngày Sinh</label>
-                                        <input v-model="create_client.ngay_sinh" type="text" class="form-control">
+                                        <input v-model="create_client.ngay_sinh" type="date" class="form-control">
                                     </div>
                                     <div class="col-6 mb-2">
                                         <label class="form-label">Tên Trường</label>
@@ -62,7 +68,7 @@
                             </div>
                             <div class="modal-footer">
                                 <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Đóng</button>
-                                <button v-on:click="createClient()" type="button" class="btn btn-primary" data-bs-dismiss="modal">Cập Nhật</button>
+                                <button v-on:click="createClient()" type="button" class="btn btn-info" data-bs-dismiss="modal">Thêm</button>
                             </div>
                             </div>
                         </div>
@@ -86,26 +92,26 @@
                         <template v-for="(v, k) in list_client">
                             <tr >
                             <th>{{ k + 1 }}</th>
-                            <th>{{ v.email }}</th>
-                            <th>{{ v.password }}</th>
-                            <th>{{ v.full_name }}</th>
-                            <th>{{ v.gioi_tinh }}</th>
-                            <th>{{ v.ngay_sinh }}</th>
-                            <th>{{ v.id_truong }}</th>
-                            <th>
-                                <button @:click="doiTrangThai(v)" v-if="v.tinh_trang == 1" class="btn btn-outline-success ">Hoạt động</button>
-                                <button  @:click="doiTrangThai(v)" v-else class="btn btn-outline-warning ">Tạm Ngưng</button>
-                            </th>
-                            <th>
+                            <td>{{ v.email }}</td>
+                            <td>{{ v.password }}</td>
+                            <td>{{ v.full_name }}</td>
+                            <td>{{ v.gioi_tinh }}</td>
+                            <td>{{ v.ngay_sinh }}</td>
+                            <td>{{ v.id_truong }}</td>
+                            <td>
+                                <button @:click="doiTrangThai(v)" v-if="v.tinh_trang == 1" style="width: 115px;" class="btn btn-outline-success ">Hoạt động</button>
+                                <button  @:click="doiTrangThai(v)" v-else style="width: 115px;" class="btn btn-outline-warning ">Tạm Ngưng</button>
+                            </td>
+                            <td>
                                 <div class="row">
                                     <div class="col text-end">
                                         <i v-on:click="Object.assign(edit_client, v)" class="fa-solid fa-pen-to-square fa-2x text-info" data-bs-toggle="modal" data-bs-target="#suaModal" type="button"></i>
                                     </div>
-                                    <div class="col">
+                                    <div class="col text-start">
                                         <i v-on:click="Object.assign(delete_client, v)" class="fa-solid fa-trash fa-2x text-danger" data-bs-toggle="modal" data-bs-target="#xoaModal" type="button"></i>
                                     </div>
                                 </div>
-                            </th>
+                            </td>
                         </tr>
                         </template>
                     </tbody>
@@ -141,7 +147,7 @@
                                     </div>
                                     <div class="col-6 mb-2">
                                         <label class="form-label">Ngày Sinh</label>
-                                        <input v-model="edit_client.ngay_sinh" type="text" class="form-control">
+                                        <input v-model="edit_client.ngay_sinh" type="date" class="form-control">
                                     </div>
                                     <div class="col-6 mb-2">
                                         <label class="form-label">Tên Trường</label>
@@ -199,6 +205,7 @@ export default {
             create_client   :   {},
             edit_client     :   {},
             delete_client   :   {},
+            tim_kiem        :   {},
         }
     },
     mounted() {
@@ -207,14 +214,21 @@ export default {
     methods: {
         loadDataClient()   {
             axios
-                .get('http://127.0.0.1:8000/api/client/lay-du-lieu')
+                .get('http://127.0.0.1:8000/api/admin/client/lay-du-lieu')
+                .then((res) =>  {
+                    this.list_client = res.data.client;
+                });
+        },
+        saerchClient(){
+            axios
+                .post('http://127.0.0.1:8000/api/admin/client/tim-client', this.tim_kiem)
                 .then((res) =>  {
                     this.list_client = res.data.client;
                 });
         },
         createClient() {
             axios
-                .post('http://127.0.0.1:8000/api/client/tao-client', this.create_client)
+                .post('http://127.0.0.1:8000/api/admin/client/tao-client', this.create_client)
                 .then((res) =>  {
                     if(res.data.status == true) {
                         toaster.success('Thông báo<br>' + res.data.message);
@@ -224,7 +238,7 @@ export default {
         },
         deleteClient() {
             axios
-                .delete('http://127.0.0.1:8000/api/client/xoa-client/'+ this.delete_client.id)
+                .delete('http://127.0.0.1:8000/api/admin/client/xoa-client/'+ this.delete_client.id)
                 .then((res) =>  {
                     if(res.data.status == true) {
                         toaster.success('Thông báo<br>' + res.data.message);
@@ -237,7 +251,7 @@ export default {
         },
         updateClient() {
             axios
-                .put('http://127.0.0.1:8000/api/client/update-client', this.edit_client)
+                .put('http://127.0.0.1:8000/api/admin/client/update-client', this.edit_client)
                 .then((res) =>  {
                     if(res.data.status == true) {
                         toaster.success('Thông báo<br>' + res.data.message);
@@ -250,7 +264,7 @@ export default {
         },
         doiTrangThai(doi) {
             axios
-                .put('http://127.0.0.1:8000/api/client/doi-trang-thai', doi)
+                .put('http://127.0.0.1:8000/api/admin/client/doi-trang-thai', doi)
                 .then((res) =>  {
                     if(res.data.status == true) {
                         toaster.success('Thông báo<br>' + res.data.message);

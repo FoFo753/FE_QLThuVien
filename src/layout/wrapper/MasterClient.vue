@@ -23,6 +23,21 @@ import '../../assets/assets_rocker/plugins/metismenu/js/metisMenu.min.js';
 import '../../assets/assets_rocker/plugins/perfect-scrollbar/js/perfect-scrollbar.js';
 import '../../assets/assets_rocker/js/index.js';
 import '../../assets/assets_rocker/js/app.js';
+
+// import '../../assets/libs/jqvmap/jqvmap.min.css'
+
+/* <link href="" rel="stylesheet" />
+
+<!-- DataTables -->
+<link href="assets/libs/datatables/dataTables.bootstrap4.min.css" rel="stylesheet" type="text/css"/>
+<link href="assets/libs/datatables/responsive.bootstrap4.min.css" rel="stylesheet" type="text/css"/>
+
+<!-- App css -->
+<link href="assets/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
+<link href="assets/css/icons.min.css" rel="stylesheet" type="text/css" />
+<link href="assets/css/app.min.css" rel="stylesheet" type="text/css" /> */
+
+
 export default {
     name        :   'app',
     components  :   {

@@ -4,7 +4,7 @@
             <div class="row mb-3">
                 <div class="col text-end">
                     <button type="button" class="btn btn-outline-primary" data-bs-toggle="modal" data-bs-target="#themMoi">
-                        <i class="fa-solid fa-pen"></i> Tạo Mới Bài Thi
+                        <i class="fa-solid fa-pen"></i> Tạo Mới Cuộc thi
                     </button>
                 </div>
             </div>
@@ -12,7 +12,7 @@
                 <div class="modal-dialog modal-xl">
                     <div class="modal-content">
                         <div class="modal-header">
-                            <h1 class="modal-title fs-5" id="exampleModalLabel">Thêm Mới Bài Thi <i
+                            <h1 class="modal-title fs-5" id="exampleModalLabel">Thêm Mới Cuộc thi <i
                                     class="fa-brands fa-stack-overflow"></i></h1>
                             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                         </div>
@@ -20,7 +20,7 @@
                             <div class="row">
                                 <div class="col">
                                     <div class="mb-3">
-                                        <label for="" class="form-label">Tên Bài Thi</label>
+                                        <label for="" class="form-label">Tên Cuộc thi</label>
                                         <input v-model="create_cuoc_thi.ten_cuoc_thi" type="text" class="form-control"
                                             name="" id="" aria-describedby="helpId" placeholder="" />
                                     </div>
@@ -61,12 +61,12 @@
                                 </div>
                                 <div class="col">
                                     <div class="mb-3">
-                                        <label for="" class="form-label">Thời Lượng Bài Thi</label>
+                                        <label for="" class="form-label">Thời Lượng Cuộc thi</label>
                                         <input v-model="create_cuoc_thi.thoi_luong" type="number" class="form-control"
                                             name="" id="" aria-describedby="helpId" placeholder="" />
                                     </div>
                                     <div class="mb-3">
-                                        <label for="" class="form-label">Người Tạo Bài Thi</label>
+                                        <label for="" class="form-label">Người Tạo Cuộc thi</label>
                                         <select v-model="create_cuoc_thi.id_nguoi_tao" class="form-select">
                                             <template v-for="(v, k) in list_admin">
                                                 <option v-bind:value="v.id">{{ v.username }}</option>
@@ -87,21 +87,21 @@
                 <div class="col">
                     <div class="card">
                         <div class="card-header">
-                            <h4>Danh Sách Bài Thi</h4>
+                            <h4>Danh Sách Cuộc thi</h4>
                         </div>
                         <div class="card-body">
                             <table class="table table-bordered">
                                 <thead>
                                     <tr>
                                         <th class="text-center align-middle">STT</th>
-                                        <th class="text-center align-middle">Tên bài thi</th>
+                                        <th class="text-center align-middle">Tên Cuộc thi</th>
                                         <th class="text-center align-middle">Môn học</th>
                                         <th class="text-center align-middle">Lớp</th>
                                         <th class="text-center align-middle">Trạng thái</th>
                                         <th class="text-center align-middle">Thời gian bắt đầu</th>
                                         <th class="text-center align-middle">Thời gian kết thúc</th>
                                         <th class="text-center align-middle">Thời lượng thi</th>
-                                        <th class="text-center align-middle">Người tạo bài thi</th>
+                                        <th class="text-center align-middle">Người tạo Cuộc thi</th>
                                         <th class="text-center align-middle">Action</th>
                                     </tr>
                                 </thead>
@@ -113,9 +113,9 @@
                                             <td class="text-center align-middle">{{ v.ten_mon_hoc }}</td>
                                             <td class="text-center align-middle">{{ v.id_lop }}</td>
                                             <td class="text-center align-middle">
-                                                <button v-if="v.tinh_trang == 1" class="btn btn-outline-success">Hoạt
+                                                <button @:click="doiTrangThai(v)" v-if="v.tinh_trang == 1" class="btn btn-outline-success">Hoạt
                                                     Động</button>
-                                                <button v-else class="btn btn-outline-warning">Tạm Ngưng</button>
+                                                <button @:click="doiTrangThai(v)" v-else class="btn btn-outline-warning">Tạm Ngưng</button>
                                             </td>
                                             <td class="text-center align-middle">{{ v.thoi_gian_bat_dau }}</td>
                                             <td class="text-center align-middle">{{ v.thoi_gian_ket_thuc }}</td>
@@ -139,7 +139,7 @@
                                 <div class="modal-dialog modal-xl">
                                     <div class="modal-content">
                                         <div class="modal-header">
-                                            <h1 class="modal-title fs-5" id="exampleModalLabel">Chỉnh sửa bài thi <i
+                                            <h1 class="modal-title fs-5" id="exampleModalLabel">Chỉnh sửa Cuộc thi <i
                                                     class="fa-brands fa-stack-overflow"></i></h1>
                                             <button type="button" class="btn-close" data-bs-dismiss="modal"
                                                 aria-label="Close"></button>
@@ -148,7 +148,7 @@
                                             <div class="row">
                                                 <div class="col">
                                                     <div class="mb-3">
-                                                        <label for="" class="form-label">Tên Bài Thi</label>
+                                                        <label for="" class="form-label">Tên Cuộc thi</label>
                                                         <input v-model="edit_cuoc_thi.ten_cuoc_thi" type="text"
                                                             class="form-control" name="" id="" aria-describedby="helpId"
                                                             placeholder="" />
@@ -192,13 +192,13 @@
                                                 </div>
                                                 <div class="col">
                                                     <div class="mb-3">
-                                                        <label for="" class="form-label">Thời Lượng Bài Thi</label>
+                                                        <label for="" class="form-label">Thời Lượng Cuộc thi</label>
                                                         <input v-model="edit_cuoc_thi.thoi_luong" type="number"
                                                             class="form-control" name="" id="" aria-describedby="helpId"
                                                             placeholder="" />
                                                     </div>
                                                     <div class="mb-3">
-                                                        <label for="" class="form-label">Người Tạo Bài Thi</label>
+                                                        <label for="" class="form-label">Người Tạo Cuộc thi</label>
                                                         <select v-model="edit_cuoc_thi.id_nguoi_tao" class="form-select">
                                                             <template v-for="(v, k) in list_admin">
                                                                 <option :value="v.id">{{ v.username }}</option>
@@ -221,7 +221,7 @@
                                 <div class="modal-dialog">
                                     <div class="modal-content">
                                         <div class="modal-header">
-                                            <h1 class="modal-title fs-5" id="xoaLabel">Xoá Bài Thi</h1>
+                                            <h1 class="modal-title fs-5" id="xoaLabel">Xoá Cuộc thi</h1>
                                             <button type="button" class="btn-close" data-bs-dismiss="modal"
                                                 aria-label="Close"></button>
                                         </div>

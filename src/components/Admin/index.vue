@@ -44,15 +44,16 @@
                         <div class="mb-3">
                             <label for="" class="form-label">Trường</label>
                             <select v-model="create_admin.id_truong" class="form-select">
-                                <option selected>1</option>
-                                <option value="">0</option>
+                                <option selected value="0">0</option> 
+                                <option value="1">Trường Duy Tân</option>
+                                <!-- Chờ tạo bảng trường rồi For ra -->
                             </select>
                         </div>
                         <div class="mb-3">
                             <label for="" class="form-label">Loại Admin</label>
                             <select v-model="create_admin.loai_admin" class="form-select">
-                                <option value="0">Select one</option>
-                                <option value="1">New Delhi</option>
+                                <option value="0">Admin</option>
+                                <option value="1">Giảng Viên</option>
                             </select>
                         </div>
                         <div class="mb-3">
@@ -76,7 +77,6 @@
                                 <tr>
                                     <th class="text-center align-middle">STT</th>
                                     <th class="text-center align-middle">Username</th>
-                                    <th class="text-center align-middle">Password</th>
                                     <th class="text-center align-middle">Full name</th>
                                     <th class="text-center align-middle">Email</th>
                                     <th class="text-center align-middle">Trường</th>
@@ -90,11 +90,17 @@
                                     <tr>
                                         <th class="text-center align-middle">{{ k + 1 }}</th>
                                         <td class="text-center align-middle">{{ v.username }}</td>
-                                        <td class="text-center align-middle">{{ v.password }}</td>
                                         <td class="text-center align-middle">{{ v.full_name }}</td>
                                         <td class="text-center align-middle">{{ v.email }}</td>
                                         <td class="text-center align-middle">{{ v.id_truong }}</td>
-                                        <td class="text-center align-middle">{{ v.loai_admin }}</td>
+                                        <td class="text-center align-middle">
+                                            <template v-if="v.loai_admin == 1">
+                                                Giảng Viên
+                                            </template>
+                                            <template v-else>
+                                                Admin
+                                            </template>
+                                        </td>
                                         <td class="text-center align-middle">
                                             <button @:click="doiTrangThai(v)" v-if="v.tinh_trang == 1" class="btn btn-outline-success mx-1">Hoạt
                                                 Động</button>
@@ -145,8 +151,8 @@
                                         <div class="mb-3">
                                             <label for="" class="form-label">Trường</label>
                                             <select v-model="edit_admin.id_truong" class="form-select">
-                                                <option selected>1</option>
-                                                <option value="">0</option>
+                                                <option value="0">0</option>
+                                                <option value="1">Duy Tân</option>
                                             </select>
                                         </div>
                                         <div class="mb-3">

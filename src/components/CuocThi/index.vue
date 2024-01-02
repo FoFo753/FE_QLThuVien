@@ -50,12 +50,12 @@
                                     </div>
                                     <div class="mb-3">
                                         <label for="" class="form-label">Thời Gian Bắt Đầu</label>
-                                        <input v-model="create_cuoc_thi.thoi_gian_bat_dau" type="date" class="form-control"
+                                        <input v-model="create_cuoc_thi.thoi_gian_bat_dau" type="datetime-local" class="form-control"
                                             name="" id="" aria-describedby="helpId" placeholder="" />
                                     </div>
                                     <div class="mb-3">
                                         <label for="" class="form-label">Thời Gian Kết Thúc</label>
-                                        <input v-model="create_cuoc_thi.thoi_gian_ket_thuc" type="date" class="form-control"
+                                        <input v-model="create_cuoc_thi.thoi_gian_ket_thuc" type="datetime-local" class="form-control"
                                             name="" id="" aria-describedby="helpId" placeholder="" />
                                     </div>
                                 </div>
@@ -66,7 +66,7 @@
                                             name="" id="" aria-describedby="helpId" placeholder="" />
                                     </div>
                                     <div class="mb-3">
-                                        <label for="" class="form-label">Người Tạo Cuộc thi</label>
+                                        <label for="" class="form-label">Giám Thị</label>
                                         <select v-model="create_cuoc_thi.id_nguoi_tao" class="form-select">
                                             <template v-for="(v, k) in list_admin">
                                                 <option v-bind:value="v.id">{{ v.username }}</option>

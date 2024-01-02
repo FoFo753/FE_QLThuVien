@@ -43,8 +43,9 @@
                                     <div class="col-6 mb-2">
                                         <label class="form-label">Giảng Viên</label>
                                         <select v-model="create_lop_dang_ki.id_giang_vien" class="form-select">
-                                            <option value="1">Lập trình cơ sở</option>
-                                            <option value="2">Android</option>
+                                            <template v-for="(value, index) in list_giang_vien">
+                                                <option v-if="value.loai_admin == 1 && value.tinh_trang == 1" v-bind:value="value.id">{{ value.full_name }}</option>
+                                            </template>
                                         </select>
                                     </div>
                                     <div class="col-6 mb-2">
@@ -188,6 +189,7 @@ export default {
         return {
             list_mon_hoc        : [],
             list_lop_dang_ki    : [],
+            list_giang_vien     : [],
             create_lop_dang_ki  : {},
             edit_lop_dang_ki    : {},
             delete_lop_dang_ki  : {},
@@ -197,6 +199,7 @@ export default {
     mounted() {
         this.getDataLop();
         this.getDatamon();
+        this.getDataGiangVien();
     },
     methods: {
         getDataLop(){
@@ -264,6 +267,14 @@ export default {
                     } else {
                         toaster.error(res.data.message);
                     }
+                });
+        },
+
+        getDataGiangVien()  {
+            axios
+                .get('http://127.0.0.1:8000/api/admin/lay-du-lieu')
+                .then((res) => {
+                    this.list_giang_vien = res.data.admin;
                 });
         }
     },

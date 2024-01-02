@@ -36,6 +36,10 @@ const routes = [
     path: "/admin/cuoc-thi",
     component: () => import("../components/CuocThi/index.vue"),
   },
+  {
+    path: "/admin/bai-thi",
+    component: () => import("../components/BaiThi/index.vue"),
+  },
 
   {
     path: "/admin/mon-hoc",
@@ -44,6 +48,11 @@ const routes = [
   {
     path: "/admin/lop-dang-ki",
     component: () => import("../components/LopDangKi/index.vue"),
+  },
+  {    
+  path: "/client",
+    component: () => import("../components/Client_SV/Client/index.vue"),
+    meta: { layout: "client" },
   },
   
 

@@ -28,6 +28,16 @@
                         <div class="parent-icon">
                             <i class="fa-solid fa-user-tie"></i>
                         </div>
+                        <div class="menu-title">Cuộc Thi</div>
+                    </a>
+                </router-link>
+            </li>
+            <li class="nav-item">
+                <router-link to="/admin/bai-thi">
+                    <a href="/admin" class="nav-link">
+                        <div class="parent-icon">
+                            <i class="fa-solid fa-user-tie"></i>
+                        </div>
                         <div class="menu-title">Bài Thi</div>
                     </a>
                 </router-link>

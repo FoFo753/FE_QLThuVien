@@ -12,7 +12,7 @@
         </div>
         <nav class="navbar navbar-expand-xl w-100">
             <ul class="navbar-nav justify-content-start flex-grow-1 gap-1">
-                <li class="nav-item dropdown">
+                <!-- <li class="nav-item dropdown">
                     <a href="javascript:;" class="nav-link dropdown-toggle dropdown-toggle-nocaret"
                         data-bs-toggle="dropdown">
                         <div class="parent-icon"><i class='bx bx-home-circle'></i>
@@ -30,14 +30,14 @@
                                     class="bx bx-right-arrow-alt"></i>Graphical</a>
                         </li>
                     </ul>
-                </li>
+                </li> -->
                 <li class="nav-item">
-                    <router-link to="/admin/danh-muc">
-                        <a href="/admin/danh-muc" class="nav-link">
+                    <router-link to="/client">
+                        <a href="/client" class="nav-link">
                             <div class="parent-icon">
-                                <i class="fa-solid fa-list"></i>
+                                <i class="fa-solid fa-book"></i>
                             </div>
-                            <div class="menu-title">Admin</div>
+                            <div class="menu-title">Lớp Đăng Kí</div>
                         </a>
                     </router-link>
                 </li>

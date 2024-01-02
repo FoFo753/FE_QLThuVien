@@ -1,6 +1,6 @@
 <template >
     <div class="row">
-        <div class="col-5">
+        <div class="col-4">
             <div class="card">
                 <div class="card-header">
                     <h4>Thêm Mới Môn Học</h4>
@@ -19,7 +19,7 @@
                 </div>
             </div>
         </div>
-        <div class="col-7">
+        <div class="col-8">
             <div class="card">
                 <div class="card-header">
                     <h4>Bảng Môn Học</h4>

@@ -44,7 +44,7 @@
                         <div class="mb-3">
                             <label for="" class="form-label">Trường</label>
                             <select v-model="create_admin.id_truong" class="form-select">
-                                <option selected value="0">0</option> 
+                                <option selected value="0">0</option>
                                 <option value="1">Trường Duy Tân</option>
                                 <!-- Chờ tạo bảng trường rồi For ra -->
                             </select>
@@ -75,6 +75,17 @@
                         <table class="table table-bordered">
                             <thead>
                                 <tr>
+                                    <th colspan="100%">
+                                        <div class="input-group mb-3">
+                                            <input v-on:keyup.enter="searchAdmin()" v-model="key_search.abc" type="text"
+                                                class="form-control" placeholder="Nhập thông tin cần tìm">
+                                            <button class="btn btn-primary" v-on:click="searchAdmin()">
+                                                <i class="fa-solid fa-magnifying-glass"></i>
+                                            </button>
+                                        </div>
+                                    </th>
+                                </tr>
+                                <tr>
                                     <th class="text-center align-middle">STT</th>
                                     <th class="text-center align-middle">Username</th>
                                     <th class="text-center align-middle">Full name</th>
@@ -102,18 +113,51 @@
                                             </template>
                                         </td>
                                         <td class="text-center align-middle">
-                                            <button @:click="doiTrangThai(v)" v-if="v.tinh_trang == 1" class="btn btn-outline-success mx-1">Hoạt
+                                            <button @:click="doiTrangThai(v)" v-if="v.tinh_trang == 1"
+                                                class="btn btn-outline-success mx-1">Hoạt
                                                 Động</button>
-                                            <button @:click="doiTrangThai(v)" v-else class="btn btn-outline-warning">Tạm Dừng</button>
+                                            <button @:click="doiTrangThai(v)" v-else class="btn btn-outline-warning">Tạm
+                                                Dừng</button>
                                         </td>
                                         <td class="text-center align-middle d-flex">
                                             <i @:click="Object.assign(edit_admin, v)" style="color: rgb(0, 255, 229);"
                                                 class="fa-solid fa-pen-to-square fa-2x mx-2" data-bs-toggle="modal"
                                                 data-bs-target="#chinhSua"></i>
                                             <i @:click="Object.assign(delete_admin, v)" style="color: red;"
-                                                class="fa-solid fa-trash fa-2x" data-bs-toggle="modal"
+                                                class="fa-solid fa-trash fa-2x mx-2" data-bs-toggle="modal"
                                                 data-bs-target="#xoa"></i>
+                                            <button class='btn btn-outline-primary' data-bs-toggle="modal"
+                                                data-bs-target="#doiMatKhau">Đổi mật khẩu</button>
                                         </td>
+                                        <div class="modal fade" id="doiMatKhau" tabindex="-1"
+                                            aria-labelledby="doiMatKhauLabel" aria-hidden="true">
+                                            <div class="modal-dialog">
+                                                <div class="modal-content">
+                                                    <div class="modal-header">
+                                                        <h1 class="modal-title fs-5" id="doiMatKhauLabel">Chỉnh sửa Admin
+                                                        </h1>
+                                                        <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                                            aria-label="Close"></button>
+                                                    </div>
+                                                    <div class="modal-body">
+                                                        <div class="mb-3">
+                                                            <label for="" class="form-label">Đổi mật khẩu:</label>
+                                                            <input v-model="edit_admin.password" type="text"
+                                                                class="form-control" name="" id="" aria-describedby="helpId"
+                                                                placeholder="" />
+                                                        </div>
+
+                                                    </div>
+                                                    <div class="modal-footer">
+                                                        <button type="button"
+                                                            class="btn btn-outline-secondary px-5 radius-30 close"
+                                                            data-bs-dismiss="modal">Đóng</button>
+                                                        <button @click="updateAdmin()" type="button"
+                                                            class="btn btn-outline-success px-5 radius-30">Xác Nhận</button>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
                                     </tr>
                                 </template>
                             </tbody>
@@ -173,7 +217,8 @@
                                     <div class="modal-footer">
                                         <button type="button" class="btn btn-outline-secondary px-5 radius-30 close"
                                             data-bs-dismiss="modal">Đóng</button>
-                                        <button  @click="updateAdmin()" type="button" class="btn btn-outline-success px-5 radius-30">Xác Nhận</button>
+                                        <button @click="updateAdmin()" type="button"
+                                            class="btn btn-outline-success px-5 radius-30">Xác Nhận</button>
                                     </div>
                                 </div>
                             </div>
@@ -210,7 +255,8 @@
                                     <div class="modal-footer">
                                         <button type="button" class="btn btn-outline-secondary px-5 radius-30 close"
                                             data-bs-dismiss="modal">Đómg</button>
-                                        <button @click="deleteAdmin()" type="button" class="btn btn-outline-danger px-5 radius-30">Xoá</button>
+                                        <button @click="deleteAdmin()" type="button"
+                                            class="btn btn-outline-danger px-5 radius-30">Xoá</button>
                                     </div>
                                 </div>
                             </div>
@@ -228,6 +274,7 @@ const toaster = createToaster({ position: "top-right" });
 export default {
     data() {
         return {
+            key_search: {},
             create_admin: {},
             list_admin: [],
             delete_admin: {},
@@ -263,12 +310,19 @@ export default {
                 .then((res) => {
                     if (res.data.status == true) {
                         toaster.success('Thông báo<br>' + res.data.message);
-                        this.loadDataAdmin()       
-                        $("#xoa .close").click()                 
+                        this.loadDataAdmin()
+                        $("#xoa .close").click()
                     }
                     else {
                         toaster.danger('Thông báo<br>' + res.data.message);
                     }
+                });
+        },
+        searchAdmin() {
+            axios
+                .post('http://127.0.0.1:8000/api/admin/tim-admin', this.key_search)
+                .then((res) => {
+                    this.list_admin = res.data.admin;
                 });
         },
         updateAdmin() {

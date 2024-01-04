@@ -1,22 +1,22 @@
 import { createRouter, createWebHistory } from "vue-router"; // cài vue-router: npm install vue-router@next --save
 // import checkLogin from "./checkLogin";
 const routes = [
-//   {
-//     path: "/auth",
-//     component: () => import("../components/Auth/index.vue"),
-//   },
+  {
+    path: "/auth",
+    component: () => import("../components/Auth/index.vue"),
+  },
 
-//   //Login
-//   {
-//     path: "/login",
-//     component: () => import("../components/Login/index.vue"),
-//     meta: { layout: "new" },
-//   },
-//   {
-//     path: "/register",
-//     component: () => import("../components/Register/index.vue"),
-//     meta: { layout: "new" },
-//   },
+  //Login
+  {
+    path: "/login",
+    component: () => import("../components/LoginClient/index.vue"),
+    meta: { layout: "account" },
+  },
+  {
+    path: "/register",
+    component: () => import("../components/RegisterClient/index.vue"),
+    meta: { layout: "account" },
+  },
 
 //   {
 //     path: "/lost-password",
@@ -49,12 +49,12 @@ const routes = [
     path: "/admin/lop-dang-ki",
     component: () => import("../components/LopDangKi/index.vue"),
   },
-  {    
+  {
   path: "/client",
     component: () => import("../components/Client_SV/Client/index.vue"),
     meta: { layout: "client" },
   },
-  
+
 
 
 ];

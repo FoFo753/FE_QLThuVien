@@ -1,5 +1,5 @@
 <template>
-<body class="bg-login">
+<body class="bg-warning">
 	<div class="wrapper">
 		<div class="section-authentication-signin d-flex align-items-center justify-content-center my-5 my-lg-0">
 			<div class="container-fluid">

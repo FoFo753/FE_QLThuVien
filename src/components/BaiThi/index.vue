@@ -143,6 +143,8 @@
                                                     <input v-model="create_cau_hoi.cau_hoi" type="text" class="form-control"
                                                         name="" id="" aria-describedby="helpId" placeholder="" />
                                                 </div>
+                                            </div>
+                                            <div class="col">
                                                 <div class="mb-3">
                                                     <label for="" class="form-label">Số lượng câu trả lời</label>
                                                     <input v-model="create_cau_hoi.so_luong_cau_hoi" type="number"
@@ -155,11 +157,17 @@
                                                     <input v-model="create_cau_hoi.diem" type="number" class="form-control"
                                                         name="" id="" aria-describedby="helpId" placeholder="" />
                                                 </div>
+                                            </div>
+                                            
+                                        </div>
+                                        <div class="row">
+                                            <div class="col">
                                                 <div class="mb-3">
                                                     <label for="" class="form-label">Điểm</label>
                                                     <table class="table table-bordered">
                                                         <thead>
                                                             <tr>
+                                                                <th class="text-center align-middle">#</th>
                                                                 <th class="text-center align-middle">Câu Hỏi</th>
                                                                 <th class="text-center align-middle">Điểm</th>
                                                                 <th class="text-center align-middle">Số lượng câu trả lời
@@ -170,6 +178,7 @@
                                                         <tbody>
                                                             <template v-for="(v, k) in list_cau_hoi" >
                                                                 <tr v-if="v.id_bai_thi == edit_bai_thi.id">
+                                                                    <th class="text-center align-middle">{{ k + 1 }}</th>
                                                                     <td class="text-center align-middle">{{ v.cau_hoi }}
                                                                     </td>
                                                                     <td class="text-center align-middle">{{ v.diem }}</td>
@@ -179,6 +188,7 @@
                                                                     <td class="text-center align-middle">
                                                                         <i @click="Object.assign(delete_cau_hoi, v),deleteCauHoi()" style="color: red;"
                                                                             class="fa-solid fa-trash fa-2x"></i>
+                                                                        <button class="btn btn-primary">aaa</button>
                                                                     </td>
                                                                 </tr>
                                                             </template>
@@ -242,6 +252,44 @@
                             </div>
                         </div>
                         <div class="modal fade" id="xoa" tabindex="-1" aria-labelledby="xoaLabel" aria-hidden="true">
+                            <div class="modal-dialog">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <h1 class="modal-title fs-5" id="xoaLabel">Xoá Cuộc thi</h1>
+                                        <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                            aria-label="Close"></button>
+                                    </div>
+                                    <div class="modal-body">
+                                        <div
+                                            class="alert alert-warning border-0 bg-warning alert-dismissible fade show py-2">
+                                            <div class="d-flex align-items-center">
+                                                <div class="font-35 text-dark"><i class="bx bx-info-circle"></i>
+                                                </div>
+                                                <div class="ms-3">
+                                                    <h6 class="mb-0 text-dark">Warning</h6>
+                                                    <div class="text-dark">
+                                                        <p>Bạn có muốn xóa <b>{{ delete_bai_thi.ten_bai_thi
+                                                        }}</b>
+                                                            này không?
+                                                        </p>
+                                                        <p>
+                                                            <b>Lưu ý:</b> Điều này không thể hoàn tác!
+                                                        </p>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="modal-footer">
+                                        <button type="button" class="btn btn-outline-secondary px-5 radius-30 close"
+                                            data-bs-dismiss="modal">Đómg</button>
+                                        <button @click="deleteBaiThi()" type="button"
+                                            class="btn btn-outline-danger px-5 radius-30">Xoá</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="modal fade" id="xoaCCCCC" tabindex="-1" aria-labelledby="xoaLabel" aria-hidden="true">
                             <div class="modal-dialog">
                                 <div class="modal-content">
                                     <div class="modal-header">

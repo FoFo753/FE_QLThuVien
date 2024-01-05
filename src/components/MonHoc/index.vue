@@ -28,25 +28,27 @@
                     <table class="table table-bordered">
                         <thead class="text-center table table-success">
                             <tr>
-                                <th>#</th>
-                                <th>Tên Môn Học</th>
-                                <th>Tình Trạng</th>
-                                <th>Option</th>
+                                <th  class="text-center align-middle">#</th>
+                                <th  class="text-center align-middle">Tên Môn Học</th>
+                                <th  class="text-center align-middle">Tình Trạng</th>
+                                <th  class="text-center align-middle">Option</th>
                             </tr>
                         </thead>
                         <tbody class="text-center">
                             <tr v-for="(v, k) in list_mon">
-                                <td>{{ k + 1 }}</td>
-                                <td>{{ v.ten_mon_hoc }}</td>
+                                <td  class="text-center align-middle">{{ k + 1 }}</td>
+                                <td  class="text-center align-middle">{{ v.ten_mon_hoc }}</td>
                                 <td class="text-center align-middle text-nowrap">
                                     <button v-if="v.tinh_trang == 1" class="btn btn-success">Hoạt Động</button>
                                     <button v-else class="btn btn-danger">Tạm Tắt</button>
                                 </td>
                                 <td>
-                                    <button @:click="Object.assign(update_mon, v)" class="btn btn-primary" data-bs-toggle="modal"
-                                        data-bs-target="#modalCapNhat">Cập Nhật</button>
-                                    <button @:click="Object.assign(delete_mon, v)" class="btn btn-danger"
-                                        data-bs-toggle="modal" data-bs-target="#modalDelete">Xóa</button>
+                                    <i @:click="Object.assign(edit_admin, v)" style="color: rgb(0, 255, 229);"
+                                                class="fa-solid fa-pen-to-square fa-2x mx-2" data-bs-toggle="modal"
+                                                data-bs-target="#modalCapNhat"></i>
+                                    <i @:click="Object.assign(delete_admin, v)" style="color: red;"
+                                                class="fa-solid fa-trash fa-2x" data-bs-toggle="modal"
+                                                data-bs-target="#modalDelete"></i>
                                 </td>
                             </tr>
                         </tbody>

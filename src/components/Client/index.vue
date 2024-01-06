@@ -31,10 +31,10 @@
                                         <label class="form-label">Email</label>
                                         <input v-model="create_client.email" type="text" class="form-control">
                                     </div>
-                                    <div class="col-6 mb-2">
+                                    <!-- <div class="col-6 mb-2">
                                         <label class="form-label">Password</label>
                                         <input v-model="create_client.password" type="text" class="form-control">
-                                    </div>
+                                    </div> -->
                                     <div class="col-6 mb-2">
                                         <label class="form-label">Họ Và Tên</label>
                                         <input v-model="create_client.full_name" type="text" class="form-control">
@@ -77,32 +77,31 @@
                 <table class="table mb-0">
                     <thead class="text-center table-info">
                         <tr>
-                            <th>STT</th>
-                            <th>Email</th>
-                            <th>Password</th>
-                            <th>Họ và Tên</th>
-                            <th>Giới Tính</th>
-                            <th>Ngày Sinh</th>
-                            <th>Trường</th>
-                            <th>Tình Trạng</th>
-                            <th>Action</th>
+                            <th class="align-middle">STT</th>
+                            <th class="align-middle">Email</th>
+                            <th class="align-middle">Họ và Tên</th>
+                            <th class="align-middle">Giới Tính</th>
+                            <th class="align-middle">Ngày Sinh</th>
+                            <th class="align-middle">Trường</th>
+                            <th class="align-middle">Tình Trạng</th>
+                            <th class="align-middle">Tùy Chọn</th>
                         </tr>
                     </thead>
                     <tbody class="text-center">
                         <template v-for="(v, k) in list_client">
                             <tr >
-                            <th>{{ k + 1 }}</th>
-                            <td>{{ v.email }}</td>
-                            <td>{{ v.password }}</td>
-                            <td>{{ v.full_name }}</td>
-                            <td>{{ v.gioi_tinh }}</td>
-                            <td>{{ v.ngay_sinh }}</td>
-                            <td>{{ v.id_truong }}</td>
-                            <td>
-                                <button @:click="doiTrangThai(v)" v-if="v.tinh_trang == 1" style="width: 115px;" class="btn btn-outline-success ">Hoạt động</button>
-                                <button  @:click="doiTrangThai(v)" v-else style="width: 115px;" class="btn btn-outline-warning ">Tạm Ngưng</button>
+                            <th class="align-middle">{{ k + 1 }}</th>
+                            <td class="align-middle">{{ v.email }}</td>
+                            <!-- <td>{{ v.password }}</td> -->
+                            <td class="align-middle">{{ v.full_name }}</td>
+                            <td class="align-middle">{{ v.gioi_tinh }}</td>
+                            <td class="align-middle">{{ v.ngay_sinh }}</td>
+                            <td class="align-middle">{{ v.id_truong }}</td>
+                            <td class="align-middle">
+                                <button @:click="doiTrangThai(v)" v-if="v.tinh_trang == 1" style="width: 120px;" class="btn btn-outline-success ">Hoạt động</button>
+                                <button  @:click="doiTrangThai(v)" v-else style="width: 120px;" class="btn btn-outline-warning ">Tạm Ngưng</button>
                             </td>
-                            <td>
+                            <td class="align-middle">
                                 <div class="row">
                                     <div class="col text-end">
                                         <i v-on:click="Object.assign(edit_client, v)" class="fa-solid fa-pen-to-square fa-2x text-info" data-bs-toggle="modal" data-bs-target="#suaModal" type="button"></i>

@@ -3,95 +3,118 @@
         <div>
             <div class="row mb-3">
                 <div class="col text-end">
-                    <button type="button" class="btn btn-outline-primary" data-bs-toggle="modal" data-bs-target="#themMoi">
-                        <i class="fa-solid fa-pen"></i> Tạo Mới Cuộc thi
-                    </button>
+
                 </div>
             </div>
-            <div class="modal fade" id="themMoi" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                <div class="modal-dialog modal-xl">
-                    <div class="modal-content">
-                        <div class="modal-header">
-                            <h1 class="modal-title fs-5" id="exampleModalLabel">Thêm Mới Cuộc thi <i
-                                    class="fa-brands fa-stack-overflow"></i></h1>
-                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+
+            <div class="row">
+                <div class="col">
+                    <div class="card">
+                        <div class="card-header text-end">
+                            <button type="button" class="btn btn-outline-primary" data-bs-toggle="modal"
+                                data-bs-target="#themMoi">
+                                <i class="fa-solid fa-pen"></i> Tạo Mới Cuộc thi
+                            </button>
                         </div>
-                        <div class="modal-body">
-                            <div class="row">
-                                <div class="col">
-                                    <div class="mb-3">
-                                        <label for="" class="form-label">Tên Cuộc thi</label>
-                                        <input v-model="create_cuoc_thi.ten_cuoc_thi" type="text" class="form-control"
-                                            name="" id="" aria-describedby="helpId" placeholder="" />
+                        <div class="modal fade" id="themMoi" tabindex="-1" aria-labelledby="exampleModalLabel"
+                            aria-hidden="true">
+                            <div class="modal-dialog modal-xl">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <h1 class="modal-title fs-5" id="exampleModalLabel">Thêm Mới Cuộc thi <i
+                                                class="fa-brands fa-stack-overflow"></i></h1>
+                                        <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                            aria-label="Close"></button>
                                     </div>
-                                    <div class="mb-3">
-                                        <label for="" class="form-label">Môn Học</label>
-                                        <select v-model="create_cuoc_thi.id_mon_hoc" class="form-select">
-                                            <template v-for="(v, k) in list_mon">
-                                                <option v-bind:value="v.id">{{ v.ten_mon_hoc }}</option>
-                                            </template>
-                                        </select>
+                                    <div class="modal-body">
+                                        <div class="row">
+                                            <div class="col">
+                                                <div class="mb-3">
+                                                    <label for="" class="form-label">Tên Cuộc thi</label>
+                                                    <input v-model="create_cuoc_thi.ten_cuoc_thi" type="text"
+                                                        class="form-control" name="" id="" aria-describedby="helpId"
+                                                        placeholder="" />
+                                                </div>
+                                                <div class="mb-3">
+                                                    <label for="" class="form-label">Môn Học</label>
+                                                    <select v-model="create_cuoc_thi.id_mon_hoc" class="form-select">
+                                                        <template v-for="(v, k) in list_mon">
+                                                            <option v-bind:value="v.id">{{ v.ten_mon_hoc }}</option>
+                                                        </template>
+                                                    </select>
+                                                </div>
+                                                <div class="mb-3">
+                                                    <label for="" class="form-label">Lớp</label>
+                                                    <select v-model="create_cuoc_thi.id_lop" class="form-select">
+                                                        <option value="1">TPM8</option>
+                                                        <option value="0">TPM13</option>
+                                                    </select>
+                                                </div>
+                                            </div>
+                                            <div class="col">
+                                                <div class="mb-3">
+                                                    <label for="" class="form-label">Trạng Thái</label>
+                                                    <select v-model="create_cuoc_thi.tinh_trang" class="form-select">
+                                                        <option value="1">Hoạt Động</option>
+                                                        <option value="0">Tạm Ngưng</option>
+                                                    </select>
+                                                </div>
+                                                <div class="mb-3">
+                                                    <label for="" class="form-label">Thời Gian Bắt Đầu</label>
+                                                    <input v-model="create_cuoc_thi.thoi_gian_bat_dau" type="datetime-local"
+                                                        class="form-control" name="" id="" aria-describedby="helpId"
+                                                        placeholder="" />
+                                                </div>
+                                                <div class="mb-3">
+                                                    <label for="" class="form-label">Thời Gian Kết Thúc</label>
+                                                    <input v-model="create_cuoc_thi.thoi_gian_ket_thuc"
+                                                        type="datetime-local" class="form-control" name="" id=""
+                                                        aria-describedby="helpId" placeholder="" />
+                                                </div>
+                                            </div>
+                                            <div class="col">
+                                                <div class="mb-3">
+                                                    <label for="" class="form-label">Thời Lượng Cuộc thi</label>
+                                                    <input v-model="create_cuoc_thi.thoi_luong" type="number"
+                                                        class="form-control" name="" id="" aria-describedby="helpId"
+                                                        placeholder="" />
+                                                </div>
+                                                <div class="mb-3">
+                                                    <label for="" class="form-label">Giám Thị</label>
+                                                    <select v-model="create_cuoc_thi.id_nguoi_tao" class="form-select">
+                                                        <template v-for="(v, k) in list_admin">
+                                                            <option v-bind:value="v.id">{{ v.username }}</option>
+                                                        </template>
+                                                    </select>
+                                                </div>
+                                            </div>
+                                        </div>
                                     </div>
-                                    <div class="mb-3">
-                                        <label for="" class="form-label">Lớp</label>
-                                        <select v-model="create_cuoc_thi.id_lop" class="form-select">
-                                            <option value="1">TPM8</option>
-                                            <option value="0">TPM13</option>
-                                        </select>
-                                    </div>
-                                </div>
-                                <div class="col">
-                                    <div class="mb-3">
-                                        <label for="" class="form-label">Trạng Thái</label>
-                                        <select v-model="create_cuoc_thi.tinh_trang" class="form-select">
-                                            <option value="1">Hoạt Động</option>
-                                            <option value="0">Tạm Ngưng</option>
-                                        </select>
-                                    </div>
-                                    <div class="mb-3">
-                                        <label for="" class="form-label">Thời Gian Bắt Đầu</label>
-                                        <input v-model="create_cuoc_thi.thoi_gian_bat_dau" type="datetime-local" class="form-control"
-                                            name="" id="" aria-describedby="helpId" placeholder="" />
-                                    </div>
-                                    <div class="mb-3">
-                                        <label for="" class="form-label">Thời Gian Kết Thúc</label>
-                                        <input v-model="create_cuoc_thi.thoi_gian_ket_thuc" type="datetime-local" class="form-control"
-                                            name="" id="" aria-describedby="helpId" placeholder="" />
-                                    </div>
-                                </div>
-                                <div class="col">
-                                    <div class="mb-3">
-                                        <label for="" class="form-label">Thời Lượng Cuộc thi</label>
-                                        <input v-model="create_cuoc_thi.thoi_luong" type="number" class="form-control"
-                                            name="" id="" aria-describedby="helpId" placeholder="" />
-                                    </div>
-                                    <div class="mb-3">
-                                        <label for="" class="form-label">Giám Thị</label>
-                                        <select v-model="create_cuoc_thi.id_nguoi_tao" class="form-select">
-                                            <template v-for="(v, k) in list_admin">
-                                                <option v-bind:value="v.id">{{ v.username }}</option>
-                                            </template>
-                                        </select>
+                                    <div class="modal-footer">
+                                        <button type="button" class="btn btn-outline-secondary close"
+                                            data-bs-dismiss="modal">Đóng</button>
+                                        <button @click="createCuocThi()" type="button" class="btn btn-outline-primary">Thêm
+                                            Mới</button>
                                     </div>
                                 </div>
                             </div>
                         </div>
-                        <div class="modal-footer">
-                            <button type="button" class="btn btn-outline-secondary close" data-bs-dismiss="modal">Đóng</button>
-                            <button @click="createCuocThi()" type="button" class="btn btn-outline-primary">Thêm Mới</button>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="row">
-                <div class="col">
-                    <div class="card">
-                        <div class="card-header">
-                            <h4>Danh Sách Cuộc thi</h4>
-                        </div>
                         <div class="card-body">
+                            <h4>Danh Sách Cuộc thi</h4>
+                            <hr>
                             <table class="table table-bordered">
                                 <thead>
+                                    <tr>
+                                        <th colspan="100%">
+                                            <div class="input-group mb-3">
+                                                <input v-on:keyup.enter="searchCuocThi()" v-model="key_search.abc"
+                                                    type="text" class="form-control" placeholder="Nhập thông tin cần tìm">
+                                                <button class="btn btn-primary" v-on:click="searchCuocThi()">
+                                                    <i class="fa-solid fa-magnifying-glass"></i>
+                                                </button>
+                                            </div>
+                                        </th>
+                                    </tr>
                                     <tr>
                                         <th class="text-center align-middle">STT</th>
                                         <th class="text-center align-middle">Tên Cuộc thi</th>
@@ -113,9 +136,11 @@
                                             <td class="text-center align-middle">{{ v.ten_mon_hoc }}</td>
                                             <td class="text-center align-middle">{{ v.id_lop }}</td>
                                             <td class="text-center align-middle">
-                                                <button @:click="doiTrangThai(v)" v-if="v.tinh_trang == 1" class="btn btn-outline-success">Hoạt
+                                                <button @:click="doiTrangThai(v)" v-if="v.tinh_trang == 1"
+                                                    class="btn btn-outline-success">Hoạt
                                                     Động</button>
-                                                <button @:click="doiTrangThai(v)" v-else class="btn btn-outline-warning">Tạm Ngưng</button>
+                                                <button @:click="doiTrangThai(v)" v-else class="btn btn-outline-warning">Tạm
+                                                    Ngưng</button>
                                             </td>
                                             <td class="text-center align-middle">{{ v.thoi_gian_bat_dau }}</td>
                                             <td class="text-center align-middle">{{ v.thoi_gian_ket_thuc }}</td>
@@ -296,6 +321,13 @@ export default {
                 .get('http://127.0.0.1:8000/api/admin/lay-du-lieu')
                 .then((res) => {
                     this.list_admin = res.data.admin;
+                });
+        },
+        searchCuocThi() {
+            axios
+                .post('http://127.0.0.1:8000/api/admin/cuoc-thi/tim-cuoc-thi', this.key_search)
+                .then((res) => {
+                    this.list_cuoc_thi = res.data.cuoc_thi;
                 });
         },
         loadDataCuocThi() {

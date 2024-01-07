@@ -68,25 +68,25 @@
                         <table class="table mb-0">
                             <thead class="text-center">
                                 <tr>
-                                    <th>#</th>
-                                <th>Mã Lớp</th>
-                                <th>Môn Học</th>
-                                <th>Giảng Viên</th>
-                                <th>Tình Trạng</th>
-                                <th>Tùy Chọn</th>
+                                <th class="align-middle">#</th>
+                                <th class="align-middle">Mã Lớp</th>
+                                <th class="align-middle">Môn Học</th>
+                                <th class="align-middle">Giảng Viên</th>
+                                <th class="align-middle">Tình Trạng</th>
+                                <th class="align-middle">Tùy Chọn</th>
                                 </tr>
                             </thead>
-                            <tbody  class="text-center">
-                                <tr v-for="(v, k) in list_lop_dang_ki">
-                                    <th>{{ k+1 }}</th>
-                                    <td>{{ v.ma_lop }}</td>
-                                    <td>{{ v.ten_mon_hoc }}</td>
-                                    <td>{{ v.id_giang_vien }}</td>
-                                    <td>
-                                        <button v-on:click="doiTrangThai(v)" v-if="v.tinh_trang == 1"  style="width: 115px;" class="btn btn-outline-success">Hoạt Động</button>
-                                        <button v-on:click="doiTrangThai(v)" v-else style="width: 115px;" class="btn btn-outline-warning">Tạm Ngưng</button>
+                            <tbody  class="text-center ">
+                                <tr v-for="(v, k) in list_lop_dang_ki " >
+                                    <th class="align-middle">{{ k+1 }}</th>
+                                    <td class="align-middle">{{ v.ma_lop }}</td>
+                                    <td class="align-middle">{{ v.ten_mon_hoc }}</td>
+                                    <td class="align-middle">{{ v.id_giang_vien }}</td>
+                                    <td class="align-middle">
+                                        <button v-on:click="doiTrangThai(v)" v-if="v.tinh_trang == 1"  style="width: 120px;" class="btn btn-outline-success">Hoạt Động</button>
+                                        <button v-on:click="doiTrangThai(v)" v-else style="width: 120px;" class="btn btn-outline-warning">Tạm Ngưng</button>
                                     </td>
-                                    <td>
+                                    <td class="align-middle">
                                         <div class="row">
                                     <div class="col text-end">
                                         <i v-on:click="Object.assign(edit_lop_dang_ki, v)" class="fa-solid fa-pen-to-square fa-2x text-info" data-bs-toggle="modal" data-bs-target="#suaModal" type="button"></i>

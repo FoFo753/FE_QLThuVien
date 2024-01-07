@@ -46,15 +46,20 @@ const routes = [
     component: () => import("../components/MonHoc/index.vue"),
   },
   {
-    path: "/admin/lop-dang-ki",
-    component: () => import("../components/LopDangKi/index.vue"),
+    path: "/admin/lop-hoc",
+    component: () => import("../components/LopHoc/index.vue"),
   },
   {
   path: "/client",
     component: () => import("../components/Client_SV/Client/index.vue"),
     meta: { layout: "client" },
   },
-
+  {
+  path: "/client/lop-dang-ki",
+    component: () => import("../components/Client_SV/Dang_ki_lop_hoc/index.vue"),
+    meta: { layout: "client" },
+  },
+  
 
 
 ];

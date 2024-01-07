@@ -32,8 +32,8 @@
                     </ul>
                 </li> -->
                 <li class="nav-item">
-                    <router-link to="/client">
-                        <a href="/client" class="nav-link">
+                    <router-link to="/client/lop-dang-ki">
+                        <a href="/client/lop-dang-ki" class="nav-link">
                             <div class="parent-icon">
                                 <i class="fa-solid fa-book"></i>
                             </div>

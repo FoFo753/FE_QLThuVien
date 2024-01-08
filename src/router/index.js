@@ -59,9 +59,11 @@ const routes = [
     component: () => import("../components/Client_SV/Dang_ki_lop_hoc/index.vue"),
     meta: { layout: "client" },
   },
-  
-
-
+  {
+    path: "/client/lam-bai",
+      component: () => import("../components/Client_SV/LamBai/index.vue"),
+      meta: { layout: "client" },
+    },
 ];
 
 const router = createRouter({

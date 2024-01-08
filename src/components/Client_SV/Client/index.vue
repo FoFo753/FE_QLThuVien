@@ -1,8 +1,13 @@
 <template>
     <div class="row mt-3 ms-5 mb-5">
-       <div class="col-2">
-        <button class="btn btn-outline-warning bg-warning text-white" style="width: 150px;">CS 201</button>
-       </div>
+       <template v-for="(v, k) in list_lop_dang_ki">
+            <template v-if="tinh_trang == 1">
+                <a  class="btn btn-outline-warning bg-warning text-white ms-3" style="width: 150px;">{{ v.ma_lop }}</a>
+            </template>
+            <template v-else>
+                 <a class="btn btn-outline-warning bg-warning text-white ms-3" style="width: 150px;">{{ v.ma_lop }}</a>
+            </template>
+       </template>
    </div>
    <hr>
   <div class="container" style="width: 1300px;">
@@ -48,7 +53,7 @@
                         <div class="row">
                             <div class="col text-end">
                                 <button class="btn btn-outline-secondary text-dark rounded-pill" data-bs-toggle="modal" data-bs-target="#chitietmodal">Chi tiết bài làm</button>
-                                <button class="ms-2 btn btn-outline-waring bg-warning text-white rounded-pill">Làm Bài</button>
+                                <a href="/client/lam-bai" class="ms-2 btn btn-outline-waring bg-warning text-white rounded-pill">Làm Bài</a>
                             </div>
                         </div>
                     </div>
@@ -73,20 +78,27 @@
                 <span class="mb-3">
                     <b class="fs-5">Câu1: hihihihihiihiih</b>
                 </span><br>
-                <input disabled type="text" class="form-control mt-2 " placeholder="A. Câu trả lời a" maxlength="50">
-                <input disabled type="text" class="form-control mt-2 " placeholder="B. Câu trả lời b" maxlength="50">
-                <input disabled type="text" class="form-control mt-2 " placeholder="C. Câu trả lời c" maxlength="50">
-                <input disabled type="text" class="form-control mt-2 " placeholder="D. Câu trả lời d" maxlength="50">
+                <div class="input-group mb-3 mt-3">
+                    <span class="input-group-text" id="basic-addon1">
+                        <input type="radio" name="" id="" class="">
+                    </span>
+                    <label type="text" class="form-control  " placeholder="" aria-label="Username" aria-describedby="basic-addon1">A.câu a</label>
+                  </div>
+                  <div class="input-group mb-3">
+                    <span class="input-group-text" id="basic-addon1"><input type="radio" name="" id=""></span>
+                    <label type="text" class="form-control" placeholder="19/05/1882" aria-label="Username" aria-describedby="basic-addon1">B. Câu b</label>
+                  </div>
+                  <div class="input-group mb-3">
+                    <span class="input-group-text" id="basic-addon1"><input type="radio" name="" id=""></span>
+                    <label type="text" class="form-control" placeholder="19/05/1880" aria-label="Username" aria-describedby="basic-addon1">C. câu c</label>
+                  </div>
+                  <div class="input-group mb-3">
+                    <span class="input-group-text" id="basic-addon1"><input type="radio" name="" id=""></span>
+                    <label type="text" class="form-control" placeholder="19/05/1890" aria-label="Username" aria-describedby="basic-addon1">D. câu d</label>
+                  </div>
             </div>
-            <div class="col-12">
-                <span class="mb-3">
-                    <b class="fs-5">Câu1: hihihihihiihiih</b>
-                </span><br>
-                <input disabled type="text" class="form-control mt-2 " placeholder="A. Câu trả lời a" maxlength="50">
-                <input disabled type="text" class="form-control mt-2 " placeholder="B. Câu trả lời b" maxlength="50">
-                <input disabled type="text" class="form-control mt-2 " placeholder="C. Câu trả lời c" maxlength="50">
-                <input disabled type="text" class="form-control mt-2 " placeholder="D. Câu trả lời d" maxlength="50">
-            </div>
+            <hr>
+<!--  -->
           </div>
          </div>
         </div>
@@ -99,10 +111,29 @@
   </div>
 </template>
 <script>
+import axios from 'axios';
+import { createToaster } from "@meforma/vue-toaster";
+const toaster = createToaster({ position: "top-right" });
 export default {
-    
+    data() {
+        return {
+            list_mon_hoc        : [],
+            list_lop_dang_ki    : [],
+        }
+    },
+    mounted() {
+        this.getDataLop();
+    },
+    methods: {
+        getDataLop(){
+            axios
+            .get('http://127.0.0.1:8000/api/admin/lop-dang-ki/lay-du-lieu')
+            .then((res)=>{
+                this.list_lop_dang_ki = res.data.lop_dang_ki;
+            });
+        },
+    },
 }
 </script>
 <style >
-    
 </style>

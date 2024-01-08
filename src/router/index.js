@@ -37,6 +37,10 @@ const routes = [
     component: () => import("../components/CuocThi/index.vue"),
   },
   {
+    path: "/admin/tao-cau-hoi/:id",
+    component: () => import("../components/CauTraLoi/index.vue"),
+  },
+  {
     path: "/admin/bai-thi",
     component: () => import("../components/BaiThi/index.vue"),
   },

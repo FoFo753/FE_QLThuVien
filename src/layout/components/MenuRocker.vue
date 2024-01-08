@@ -63,8 +63,8 @@
                     </router-link>
                 </li>
                 <li class="nav-item">
-                    <router-link to="/admin/lop-dang-ki">
-                        <a href="/admin/lop-dang-ki" class="nav-link">
+                    <router-link to="/admin/lop-hoc">
+                        <a href="/admin/lop-hoc" class="nav-link">
                             <div class="parent-icon">
                                 <i class="fa-solid fa-hotel"></i>
                             </div>
@@ -127,7 +127,7 @@
                     </a>
                 </router-link>
             </li>
-            <li class="nav-item">
+            <!-- <li class="nav-item">
                 <router-link to="/admin/lop-hoc">
                     <a href="/admin/lop-hoc" class="nav-link">
                         <div class="parent-icon">
@@ -136,10 +136,9 @@
                         <div class="menu-title">Lớp Học</div>
                     </a>
                 </router-link>
-            </li>
+            </li> -->
         </ul>
     </nav>
-</div>
 </template>
 <script>
 export default {

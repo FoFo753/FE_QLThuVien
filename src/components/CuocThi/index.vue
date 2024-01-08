@@ -46,8 +46,8 @@
                                                 <div class="mb-3">
                                                     <label for="" class="form-label">Lớp</label>
                                                     <select v-model="create_cuoc_thi.id_lop" class="form-select">
-                                                        <option value="1">TPM8</option>
-                                                        <option value="0">TPM13</option>
+                                                        <option value="1"></option>
+                                                        <option value="0"></option>
                                                     </select>
                                                 </div>
                                             </div>

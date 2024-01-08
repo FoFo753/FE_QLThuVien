@@ -117,15 +117,22 @@
                                                 data-bs-target="#xoa"></i>
                                         </td>
                                         <td class="text-center align-middle">
+                                            <router-link :to="'/admin/tao-cau-hoi/' + v.id">
+                                                <button class="btn btn-outline-success">
+                                                    Tạo câu hỏi
+                                                </button>
+                                            </router-link>
+                                        </td>
+                                        <!-- <td class="text-center align-middle">
                                             <button class="btn btn-outline-primary" @:click="Object.assign(edit_bai_thi, v)"
                                                 data-bs-toggle="modal" data-bs-target="#cauHoi">Tạo câu hỏi cho bài
                                                 thi</button>
-                                        </td>
+                                        </td> -->
                                     </tr>
                                 </template>
                             </tbody>
                         </table>
-                        <div class="modal fade" id="cauHoi" tabindex="-1" aria-labelledby="exampleModalLabel"
+                        <!-- <div class="modal fade" id="cauHoi" tabindex="-1" aria-labelledby="exampleModalLabel"
                             aria-hidden="true">
                             <div class="modal-dialog modal-xl">
                                 <div class="modal-content">
@@ -206,7 +213,7 @@
                                     </div>
                                 </div>
                             </div>
-                        </div>
+                        </div> -->
                         <div class="modal fade" id="chinhSua" tabindex="-1" aria-labelledby="exampleModalLabel"
                             aria-hidden="true">
                             <div class="modal-dialog modal-xl">
@@ -377,7 +384,7 @@ export default {
                 })
                 .then((res) => {
                     this.list_cau_hoi = res.data.cau_hoi;
-                    console.log("okle" ,   this.list_cau_hoi);
+                    console.log("okle", this.list_cau_hoi);
                 });
         },
         loadDataBaiThi() {

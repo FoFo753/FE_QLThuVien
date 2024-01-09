@@ -42,7 +42,7 @@
                                 <td  class="text-center align-middle">{{ k + 1 }}</td>
                                 <td  class="text-center align-middle">{{ v.ma_mon_hoc }}</td>
                                 <td  class="text-center align-middle">{{ v.ten_mon_hoc }}</td>
-                                <td class="text-center align-middle">
+                                <td  class="text-center align-middle">
                                             <button @:click="doiTrangThai(v)" v-if="v.tinh_trang == 1"
                                                 class="btn btn-outline-success mx-1">Hoạt
                                                 Động</button>

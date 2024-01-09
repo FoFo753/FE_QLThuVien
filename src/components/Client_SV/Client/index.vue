@@ -1,12 +1,7 @@
 <template>
     <div class="row mt-3 ms-5 mb-5">
-       <template v-for="(v, k) in list_lop_dang_ki">
-            <template v-if="tinh_trang == 1">
-                <a  class="btn btn-outline-warning bg-warning text-white ms-3" style="width: 150px;">{{ v.ma_lop }}</a>
-            </template>
-            <template v-else>
-                 <a class="btn btn-outline-warning bg-warning text-white ms-3" style="width: 150px;">{{ v.ma_lop }}</a>
-            </template>
+       <template v-for="(v, k) in list_lop_dang_ki" >
+                <a v-if="v.tinh_trang == 1" href="/client/lop-dang-ki" class="btn btn-outline-warning bg-warning text-white ms-3" style="width: 150px;">{{ v.ma_lop }}</a>
        </template>
    </div>
    <hr>
@@ -45,7 +40,8 @@
                                 </tr>
                                 <tr>
                                     <th class="align-middle">Tình Trạng</th>
-                                    <td class="align-middle">Chưa mở</td>
+                                    <td v-if="tinh_trang == 0" class="align-middle">Chưa mở</td>
+                                    <td v-else class="align-middle">Đang mở</td>
                                 </tr>
                             </tbody>
                         </table>

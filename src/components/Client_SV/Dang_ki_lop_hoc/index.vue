@@ -1,9 +1,9 @@
 <template>
     <div class="container">
-        <div class="row">
+        <div class="row" >
             <template v-for="(v, k) in list_lop_dang_ki">
-                <div class="col-4">
-                    <div class="card border-warning">
+                    <div class="col-4">
+                    <div class="card border-warning" v-if="v.tinh_trang == 1">
 							<div class="card-body">
                                  <div class="row">
                                         <div class="col-12">
@@ -34,32 +34,32 @@ import axios from 'axios';
 import { createToaster } from "@meforma/vue-toaster";
 const toaster = createToaster({ position: "top-right" });
 export default {
-            data() {
-                return {
-                    list_mon_hoc        : [],
-                    list_lop_dang_ki    : [],
-                }
-            },
-            mounted() {
-                this.getDataLop();
-                this.getDatamon();
-            },
-            methods: {
-                getDataLop(){
-            axios
-            .get('http://127.0.0.1:8000/api/admin/lop-dang-ki/lay-du-lieu')
-            .then((res)=>{
-                this.list_lop_dang_ki = res.data.lop_dang_ki;
+    data() {
+        return {
+            list_mon_hoc        : [],
+            list_lop_dang_ki    : [],
+        }
+    },
+    mounted() {
+        this.getDataLop();
+        this.getDatamon();
+    },
+    methods: {
+        getDataLop(){
+    axios
+    .get('http://127.0.0.1:8000/api/admin/lop-dang-ki/lay-du-lieu')
+    .then((res)=>{
+        this.list_lop_dang_ki = res.data.lop_dang_ki;
+    });
+    },
+    getDatamon() {
+        axios
+            .get('http://127.0.0.1:8000/api/admin/mon-hoc/lay-mon-hoc')
+            .then((res) => {
+                this.list_mon_hoc = res.data.mon_hoc;
             });
-        },
-        getDatamon() {
-            axios
-                .get('http://127.0.0.1:8000/api/admin/mon-hoc/lay-mon-hoc')
-                .then((res) => {
-                    this.list_mon_hoc = res.data.mon_hoc;
-                });
-        },
-            },
+    },
+    },
 }
 </script>
 <style>

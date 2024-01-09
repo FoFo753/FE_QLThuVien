@@ -43,16 +43,16 @@
                                                 <label class="form-label">Môn Học</label>
                                                 <select v-model="create_lop_dang_ki.id_mon" class="form-select">
                                                     <template v-for="(v, k) in list_mon_hoc">
-                                                        <option v-bind:value="v.id">{{ v.ten_mon_hoc }}</option>
+                                                        <option v-bind:value="v.id">{{ v.ma_mon_hoc }}</option>
                                                     </template>
                                                 </select>
                                             </div>
                                             <div class="col-6 mb-2">
                                                 <label class="form-label">Giảng Viên</label>
                                                 <select v-model="create_lop_dang_ki.id_giang_vien" class="form-select">
-                                                    <template v-for="(value, index) in list_giang_vien">
-                                                        <option v-if="value.loai_admin == 1 && value.tinh_trang == 1"
-                                                            v-bind:value="value.id">{{ value.full_name }}</option>
+                                                    <template v-for="(v, k) in list_giang_vien">
+                                                        <option v-if="v.loai_admin == 1 && v.tinh_trang == 1"
+                                                            v-bind:value="v.id">{{ v.full_name }}</option>
                                                     </template>
                                                 </select>
                                             </div>
@@ -80,7 +80,7 @@
                                 <tr>
                                     <th class="align-middle">#</th>
                                     <th class="align-middle">Mã Lớp</th>
-                                    <th class="align-middle">Môn Học</th>
+                                    <th class="align-middle">Mã Môn</th>
                                     <th class="align-middle">Giảng Viên</th>
                                     <th class="align-middle">Tình Trạng</th>
                                     <th class="align-middle">Chi Tiết Lớp</th>
@@ -91,8 +91,8 @@
                                 <tr v-for="(v, k) in list_lop_dang_ki ">
                                     <th class="align-middle">{{ k + 1 }}</th>
                                     <td class="align-middle">{{ v.ma_lop }}</td>
-                                    <td class="align-middle">{{ v.ten_mon_hoc }}</td>
-                                    <td class="align-middle">{{ v.id_giang_vien }}</td>
+                                    <td class="align-middle">{{ v.ma_mon_hoc }}</td>
+                                        <td class="align-middle">{{ v.id_giang_vien }}</td>
                                     <td class="align-middle">
                                         <button v-on:click="doiTrangThai(v)" v-if="v.tinh_trang == 1" style="width: 120px;"
                                             class="btn btn-outline-success">Hoạt Động</button>
@@ -100,7 +100,7 @@
                                             class="btn btn-outline-warning">Tạm Ngưng</button>
                                     </td>
                                     <td>
-                                        <a href="/admin/chi-tiet-lop" type="button" class="btn btn-success">i</a>
+                                        <a href="/admin/chi-tiet-lop" type="button" class="btn btn-success rounded-pill text-center"><i class="fa-solid fa-info"></i></a> 
                                     </td>
                                     <td class="align-middle">
                                         <div class="row">

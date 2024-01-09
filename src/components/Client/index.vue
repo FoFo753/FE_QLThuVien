@@ -213,7 +213,10 @@ export default {
     methods: {
         loadDataClient()   {
             axios
-                .get('http://127.0.0.1:8000/api/admin/client/lay-du-lieu')
+                .get('http://127.0.0.1:8000/api/admin/client/lay-du-lieu', {
+            headers: {
+                Authorization: 'Bearer ' +  localStorage.getItem('token')
+            }})
                 .then((res) =>  {
                     this.list_client = res.data.client;
                 });
@@ -274,7 +277,7 @@ export default {
                 });
         }
     },
-    
+
 }
 </script>
 <style>

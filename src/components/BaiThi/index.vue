@@ -296,7 +296,7 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="modal fade" id="xoaCCCCC" tabindex="-1" aria-labelledby="xoaLabel" aria-hidden="true">
+                        <!-- <div class="modal fade" id="xoaCCCCC" tabindex="-1" aria-labelledby="xoaLabel" aria-hidden="true">
                             <div class="modal-dialog">
                                 <div class="modal-content">
                                     <div class="modal-header">
@@ -333,7 +333,7 @@
                                     </div>
                                 </div>
                             </div>
-                        </div>
+                        </div> -->
                     </div>
                 </div>
             </div>

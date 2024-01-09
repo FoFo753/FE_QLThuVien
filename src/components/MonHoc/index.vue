@@ -7,11 +7,11 @@
                 </div>
                 <div class="card-body">
                     <label>Mã Môn Học</label>
-                    <input v-model="create_mon.ma_mon_hoc" type="text" placeholder="nhập mã môn học" class="form-control">
+                    <input v-model="create_mon.ma_mon_hoc" type="text" placeholder="Nhập mã môn học" class="form-control">
                     <label>Tên Môn Học</label>
-                    <input v-model="create_mon.ten_mon_hoc" type="text" placeholder="nhập tên môn học" class="form-control">
+                    <input v-model="create_mon.ten_mon_hoc" type="text" placeholder="Nhập tên môn học" class="form-control">
                     <label class="mt-2">Tình Trạng</label>
-                    <select v-model="create_mon.tinh_trang" name="" class="form-control ">
+                    <select v-model="create_mon.tinh_trang" name="" class="form-control " placeholder="Hoạt Động">
                         <option value="1">Hoạt động</option>
                         <option value="0">Tạm tắt</option>
                     </select>

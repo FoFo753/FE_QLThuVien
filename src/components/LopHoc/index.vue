@@ -59,8 +59,8 @@
                                             <div class="col-6 mb-2">
                                                 <label class="form-label">Tình Trạng</label>
                                                 <select v-model="create_lop_dang_ki.tinh_trang" class="form-select">
-                                                    <option value="0">Đang Học</option>
-                                                    <option value="1">Tạm Nghĩ</option>
+                                                    <option value="1">Đang Học</option>
+                                                    <option value="0">Tạm Nghĩ</option>
                                                 </select>
                                             </div>
                                         </div>

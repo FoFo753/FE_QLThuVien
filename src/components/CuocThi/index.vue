@@ -311,21 +311,33 @@ export default {
     methods: {
         getDatamon() {
             axios
-                .get('http://127.0.0.1:8000/api/admin/mon-hoc/lay-mon-hoc')
+                .get('http://127.0.0.1:8000/api/admin/mon-hoc/lay-mon-hoc',{
+                    headers: {
+                        Authorization: 'Bearer ' +  localStorage.getItem('token')
+                    }
+            })
                 .then((res) => {
                     this.list_mon = res.data.mon_hoc;
                 });
         },
         loadDataAdmin() {
             axios
-                .get('http://127.0.0.1:8000/api/admin/lay-du-lieu')
+                .get('http://127.0.0.1:8000/api/admin/lay-du-lieu',{
+                    headers: {
+                        Authorization: 'Bearer ' +  localStorage.getItem('token')
+                    }
+            })
                 .then((res) => {
                     this.list_admin = res.data.admin;
                 });
         },
         searchCuocThi() {
             axios
-                .post('http://127.0.0.1:8000/api/admin/cuoc-thi/tim-cuoc-thi', this.key_search)
+                .post('http://127.0.0.1:8000/api/admin/cuoc-thi/tim-cuoc-thi', this.key_search, {
+                    headers: {
+                        Authorization: 'Bearer ' +  localStorage.getItem('token')
+                    }
+                })
                 .then((res) => {
                     this.list_cuoc_thi = res.data.cuoc_thi;
                 });
@@ -344,7 +356,11 @@ export default {
 
         searchCuocThi() {
             axios
-                .post('http://127.0.0.1:8000/api/admin/cuoc-thi/tim-cuoc-thi', this.key_search)
+                .post('http://127.0.0.1:8000/api/admin/cuoc-thi/tim-cuoc-thi', this.key_search, {
+                    headers: {
+                        Authorization: 'Bearer ' +  localStorage.getItem('token')
+                    }
+            })
                 .then((res) => {
                     this.list_cuoc_thi = res.data.cuoc_thi;
                 });
@@ -353,7 +369,11 @@ export default {
         createCuocThi() {
             console.log(this.create_cuoc_thi);
             axios
-                .post('http://127.0.0.1:8000/api/admin/cuoc-thi/tao-cuoc-thi', this.create_cuoc_thi)
+                .post('http://127.0.0.1:8000/api/admin/cuoc-thi/tao-cuoc-thi', this.create_cuoc_thi,{
+                    headers: {
+                        Authorization: 'Bearer ' +  localStorage.getItem('token')
+                    }
+            })
                 .then((res) => {
                     if (res.data.status == true) {
                         toaster.success('Thông báo<br>' + res.data.message);
@@ -365,7 +385,11 @@ export default {
         },
         deleteCuocThi() {
             axios
-                .delete('http://127.0.0.1:8000/api/admin/cuoc-thi/xoa-cuoc-thi/' + this.delete_cuoc_thi.id)
+                .delete('http://127.0.0.1:8000/api/admin/cuoc-thi/xoa-cuoc-thi/' + this.delete_cuoc_thi.id, {
+                    headers: {
+                        Authorization: 'Bearer ' +  localStorage.getItem('token')
+                    }
+            })
                 .then((res) => {
                     if (res.data.status == true) {
                         toaster.success('Thông báo<br>' + res.data.message);
@@ -379,7 +403,11 @@ export default {
         },
         updateCuocThi() {
             axios
-                .put('http://127.0.0.1:8000/api/admin/cuoc-thi/cap-nhat-cuoc-thi', this.edit_cuoc_thi)
+                .put('http://127.0.0.1:8000/api/admin/cuoc-thi/cap-nhat-cuoc-thi', this.edit_cuoc_thi, {
+                    headers: {
+                        Authorization: 'Bearer ' +  localStorage.getItem('token')
+                    }
+            })
                 .then((res) => {
                     if (res.data.status == true) {
                         toaster.success('Thông báo<br>' + res.data.message);
@@ -393,7 +421,11 @@ export default {
 
         doiTrangThai(xyz) {
             axios
-                .put('http://127.0.0.1:8000/api/admin/cuoc-thi/doi-trang-thai', xyz)
+                .put('http://127.0.0.1:8000/api/admin/cuoc-thi/doi-trang-thai', xyz,{
+                    headers: {
+                        Authorization: 'Bearer ' +  localStorage.getItem('token')
+                    }
+            })
                 .then((res) => {
                     if (res.data.status == true) {
                         toaster.success('Thông báo<br>' + res.data.message);

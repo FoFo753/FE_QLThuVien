@@ -52,7 +52,11 @@ export default {
         },
         getDataLop(){
             axios
-            .get('http://127.0.0.1:8000/api/client/lop-hoc/lay-du-lieu/' + this.id_mon_hoc)
+            .get('http://127.0.0.1:8000/api/client/lop-hoc/lay-du-lieu/' + this.id_mon_hoc,{
+                    headers: {
+                        Authorization: 'Bearer ' +  localStorage.getItem('token')
+                    }
+            })
             .then((res)=>{
                 this.list_lop_hoc = res.data.lop_dang_ki;
                 console.log(this.list_lop_hoc);

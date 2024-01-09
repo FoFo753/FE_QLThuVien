@@ -61,7 +61,6 @@ export default {
                 console.log(this.list_lop_dang_ki);
             });
         },
-
         huyDangKiLopHoc(id) {
             var payload = {
                 id : id // Đoạn ni gửi id của chi tiết lớp đăng kí về

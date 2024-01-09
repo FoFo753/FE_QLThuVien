@@ -54,6 +54,10 @@ const routes = [
     component: () => import("../components/LopHoc/index.vue"),
   },
   {
+    path: "/admin/chi-tiet-lop",
+    component: () => import("../components/ChiTietLop/index.vue"),
+  },
+  {
   path: "/client",
     component: () => import("../components/Client_SV/Client/index.vue"),
     meta: { layout: "client" },

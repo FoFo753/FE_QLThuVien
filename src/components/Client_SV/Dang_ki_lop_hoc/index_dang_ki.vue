@@ -1,7 +1,7 @@
 <template>
     <div class="container">
         <div class="row" >
-            <template v-for="(v, k) in list_lop_hoc">
+            <template v-for="(v, k) in list_lop_dang_ki">
                     <div class="col-4">
                     <div class="card border-warning" v-if="v.tinh_trang == 1">
 							<div class="card-body">
@@ -19,7 +19,7 @@
                                             <hr>
                                         </div>
                                         <div class="col-12 text-end">
-									        <a type="button" class="btn btn-inverse-warning rounded-pill" v-on:click="dangKiLopHoc(v.id)">Đăng kí</a>
+									        <a type="button" class="btn btn-inverse-danger rounded-pill" v-on:click="huyDangKiLopHoc(v.id)">Hủy Đăng kí</a>
                                         </div>
                                  </div>
                             </div>
@@ -36,12 +36,11 @@ const toaster = createToaster({ position: "top-right" });
 export default {
     data() {
         return {
-            list_lop_hoc        : [],
-            id_mon_hoc          : 0,
+            list_lop_dang_ki        : [],
+            id_mon_hoc              : 0,
         }   
     },
     mounted() {
-        this.getIdMonHoc();
         this.getDataLop();
     },
     methods: {
@@ -52,20 +51,24 @@ export default {
         },
         getDataLop(){
             axios
-            .get('http://127.0.0.1:8000/api/client/lop-hoc/lay-du-lieu/' + this.id_mon_hoc)
+            .get('http://127.0.0.1:8000/api/client/lop-hoc/lop-da-dang-ki', {
+                    headers: {
+                        Authorization: 'Bearer ' +  localStorage.getItem('token')
+                    }
+            })
             .then((res)=>{
-                this.list_lop_hoc = res.data.lop_dang_ki;
-                console.log(this.list_lop_hoc);
+                this.list_lop_dang_ki = res.data.lop_dang_ki;
+                console.log(this.list_lop_dang_ki);
             });
         },
 
-        dangKiLopHoc(id_lop) {
+        huyDangKiLopHoc(id) {
             var payload = {
-                id_lop : id_lop
+                id : id // Đoạn ni gửi id của chi tiết lớp đăng kí về
             };
 
             axios
-                .post('http://127.0.0.1:8000/api/client/lop-hoc/dang-ki-lop', payload, {
+                .post('http://127.0.0.1:8000/api/client/lop-hoc/huy-dang-ki-lop', payload, {
                     headers: {
                         Authorization: 'Bearer ' +  localStorage.getItem('token')
                     }
@@ -73,11 +76,11 @@ export default {
                 .then((res) => {
                     if (res.data.status == true) {
                         toaster.success('Thông báo<br>' + res.data.message);
-                        this.getDataLop();
                     }
                     else {
-                        toaster.error('Thông báo<br>' + res.data.message);
+                        toaster.danger('Thông báo<br>' + res.data.message);
                     }
+                    this.getDataLop();
                 })
         }
     },

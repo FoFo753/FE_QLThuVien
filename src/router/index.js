@@ -63,15 +63,22 @@ const routes = [
     meta: { layout: "client" },
   },
   {
-  path: "/client/lop-dang-ki",
+  path: "/client/lop-dang-ki/:id",
     component: () => import("../components/Client_SV/Dang_ki_lop_hoc/index.vue"),
     meta: { layout: "client" },
   },
   {
     path: "/client/lam-bai",
-      component: () => import("../components/Client_SV/LamBai/index.vue"),
-      meta: { layout: "client" },
-    },
+    component: () => import("../components/Client_SV/LamBai/index.vue"),
+    meta: { layout: "client" },
+    // beforeEnter: checkLogin
+  },
+
+  {
+    path: "/client/lop-da-dang-ki",
+    component: () => import("../components/Client_SV/Dang_ki_lop_hoc/index_dang_ki.vue"),
+    meta: { layout: "client" },
+  },
 ];
 
 const router = createRouter({

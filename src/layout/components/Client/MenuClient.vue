@@ -31,6 +31,16 @@
                         </li>
                     </ul>
                 </li> -->
+                <router-link to="/client/lop-da-dang-ki">
+                    <li class="nav-item">
+                    <a href="javascript:;" class="nav-link">
+                        <div class="parent-icon"><i class='bx bx-home-circle'></i>
+                        </div>
+                        <div class="menu-title">Lớp Đã Đăng Kí</div>
+                    </a>
+                </li>
+                </router-link>
+                
             </ul>
         </nav>
     </div>

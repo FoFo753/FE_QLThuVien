@@ -35,7 +35,7 @@
                             <form class="row g-3">
                                 <div class="col-6">
                                     <label for="inputFirstName" class="form-label text-warning">Gioi Tính</label>
-                                    <select v-model="dangKy.gioi_tinh" name="" id="" class="form-control">
+                                    <select v-model="dang_ky.gioi_tinh" name="" id="" class="form-control">
                                         <option value="0">Nam</option>
                                         <option value="1">Nữ</option>
                                     </select>

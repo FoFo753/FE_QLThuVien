@@ -1,7 +1,7 @@
 <template>
     <div class="row mt-3 ms-5 mb-5">
-       <template v-for="(v, k) in list_lop_dang_ki" >
-                <a v-if="v.tinh_trang == 1" href="/client/lop-dang-ki" class="btn btn-outline-warning bg-warning text-white ms-3" style="width: 150px;">{{ v.ma_lop }}</a>
+       <template v-for="(v, k) in list_mon_hoc" >
+                <a v-if="v.tinh_trang == 1" v-bind:href="'/client/lop-dang-ki/' + v.id" class="btn btn-outline-warning bg-warning text-white ms-3" style="width: 150px;">{{ v.ma_mon_hoc }}</a>
        </template>
    </div>
    <hr>
@@ -118,14 +118,14 @@ export default {
         }
     },
     mounted() {
-        this.getDataLop();
+        this.getDataMonHoc();
     },
     methods: {
-        getDataLop(){
+        getDataMonHoc(){
             axios
-            .get('http://127.0.0.1:8000/api/admin/lop-dang-ki/lay-du-lieu')
+            .get('http://127.0.0.1:8000/api/client/mon-hoc/lay-du-lieu')
             .then((res)=>{
-                this.list_lop_dang_ki = res.data.lop_dang_ki;
+                this.list_mon_hoc = res.data.mon_hoc;
             });
         },
     },

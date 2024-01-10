@@ -72,24 +72,48 @@ export default {
     },
     mounted() {
         this.is_login = false;
-        // this.checkToken();
+        this.checkToken();
     },
     methods: {
         dangNhap() {
             axios
-                .post('http://127.0.0.1:8000/api/admin/dangnhapadmin', this.dang_nhap)
+                .post('http://127.0.0.1:8000/api/dangnhapadmin', this.dang_nhap)
                 .then((res) => {
                     if (res.data.status) {
                         toaster.success('Thông báo<br>' + res.data.message);
                         var arr = res.data.token.split("|");
                         localStorage.setItem('token_admin', arr[1]);
                         console.log(arr[1]);
+                        this.$router.push('/admin');
                     } else {
                         toaster.error('Thông báo<br>' + res.data.message);
                     }
                 });
         },
+
+        checkToken() {
+            axios
+            .post('http://127.0.0.1:8000/api/check-admin', {}, {
+                headers: {
+                    Authorization: 'Bearer ' +  localStorage.getItem('token_admin')
+                }}
+            )
+            .then((res) => {
+                localStorage.setItem('ho_ten', res.data.ho_ten);
+                if(res.status === 200) {
+                    this.$router.push('/admin');
+                } else {
+                    toaster.warning('Thông báo<br>Bạn cần đăng nhập hệ thống trước!');
+                    this.$router.push('/auth');
+                }
+            })
+            .catch(() => {
+                toaster.warning('Thông báo<br>Bạn cần đăng nhập hệ thống trước!');
+                this.$router.push('/auth');
+            });
+        }
     },
 }
 </script>
-<style></style>
+<style>
+</style>

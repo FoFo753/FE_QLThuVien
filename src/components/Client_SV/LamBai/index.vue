@@ -58,8 +58,15 @@
     </div>
 </template>
 <script>
+import axios from 'axios';
 export default {
-    
+    data() {
+        return {
+            bai_thi     : {},
+            id_bai_thi  : 0
+        }
+    },
+    mounted
 }
 </script>
 <style>

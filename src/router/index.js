@@ -26,7 +26,7 @@ const routes = [
   {
     path: "/admin",
     component: () => import("../components/Admin/index.vue"),
-    beforeEnter: checkLoginAdmin
+    // beforeEnter: checkLoginAdmin
   },
   {
     path: "/admin/cuoc-thi",
@@ -60,7 +60,7 @@ const routes = [
     beforeEnter: checkLoginAdmin
   },
   {
-  path: "/client",
+  path: "/",
     component: () => import("../components/Client_SV/Client/index.vue"),
     meta: { layout: "client" },
   },
@@ -70,10 +70,10 @@ const routes = [
     meta: { layout: "client" },
   },
   {
-    path: "/client/lam-bai",
+    path: "/client/lam-bai/:id",
     component: () => import("../components/Client_SV/LamBai/index.vue"),
     meta: { layout: "client" },
-    // beforeEnter: checkLogin
+    beforeEnter: checkLoginClient
   },
 
   {

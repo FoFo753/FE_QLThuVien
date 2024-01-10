@@ -31,10 +31,19 @@
                         </li>
                     </ul>
                 </li> -->
-                <router-link to="/client/lop-da-dang-ki">
+                <router-link to="/">
                     <li class="nav-item">
                     <a href="javascript:;" class="nav-link">
                         <div class="parent-icon"><i class='bx bx-home-circle'></i>
+                        </div>
+                        <div class="menu-title">Trang Chủ</div>
+                    </a>
+                </li>
+                </router-link>
+                <router-link to="/client/lop-da-dang-ki">
+                    <li class="nav-item">
+                    <a href="javascript:;" class="nav-link">
+                        <div class="parent-icon"><i class="fa-solid fa-school-circle-check"></i>
                         </div>
                         <div class="menu-title">Lớp Đã Đăng Kí</div>
                     </a>

@@ -85,7 +85,7 @@ export default {
                         localStorage.setItem('token', arr[1]);
                         console.log(arr[1]);
                         this.checkToken();
-                        this.$router.push('/client');
+                        this.$router.push('/');
 
                     } else {
                         toaster.error('Thông báo<br>' + res.data.message);
@@ -104,7 +104,7 @@ export default {
                     localStorage.setItem('ho_ten', res.data.full_name);
                     if (res.status === 200) {
                         this.list_token = res.data.list;
-                        this.$router.push('/client');
+                        this.$router.push('/');
                     }
 
                 })

@@ -7,8 +7,8 @@
                         <h4 class="logo-text  text-warning">DreamTeam</h4>
                     </div>
                     <div class="">
-                        <router-link to="/client">
-                            <a href="/client">
+                        <router-link to="/">
+                            <a href="/">
                             <img src="https://cdn.worldvectorlogo.com/logos/dreamteam.svg" class="logo-icon" alt="logo icon" style="width: 200px;height:100px;">
                         </a>
                         </router-link>

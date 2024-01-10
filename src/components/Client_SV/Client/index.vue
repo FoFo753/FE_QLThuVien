@@ -7,56 +7,60 @@
    <hr>
   <div class="container" style="width: 1300px;">
     <div class="row">
-    <div class="col mt-4">
-        <div class="card">
-            <div class="card-body text-center ">
-               <div class="col">
-               </div>
-               <div class="col"> 
-                <b class="fs-3">Home Works</b>
+        <template v-for="(v, k) in list_bai_thi">
+            <div class="col-lg-12 mt-4">
+            <div class="card">
+                <div class="card-body text-center ">
+                <div class="col">
                 </div>
-                <div class="col text-end ">
-                </div>
-                <hr>
-                <div class="row">
-                    <div class="col  text-start">
-                        <table class="table table-bordered mt-3 mb-3">
-                            <tbody>
-                                <tr>
-                                    <th class="align-middle">Nội Dung</th>
-                                    <td class="align-middle"><a href="">HomeWorks</a></td>
-                                </tr>
-                                <tr>
-                                    <th class="align-middle">Tổng số câu</th>
-                                    <td class="align-middle">40</td>
-                                </tr>
-                                <tr>
-                                    <th class="align-middle">Điểm</th>
-                                    <td class="align-middle">8,75</td>
-                                </tr>
-                                <tr>
-                                    <th class="align-middle">Hạn nộp</th>
-                                    <td class="align-middle">30/12/2023</td>
-                                </tr>
-                                <tr>
-                                    <th class="align-middle">Tình Trạng</th>
-                                    <td v-if="tinh_trang == 0" class="align-middle">Chưa mở</td>
-                                    <td v-else class="align-middle">Đang mở</td>
-                                </tr>
-                            </tbody>
-                        </table>
-                        <hr>
-                        <div class="row">
-                            <div class="col text-end">
-                                <button class="btn btn-outline-secondary text-dark rounded-pill" data-bs-toggle="modal" data-bs-target="#chitietmodal">Chi tiết bài làm</button>
-                                <a href="/client/lam-bai" class="ms-2 btn btn-outline-waring bg-warning text-white rounded-pill">Làm Bài</a>
+                <div class="col"> 
+                    <b class="fs-3">{{ v.ten_cuoc_thi }}</b>
+                    </div>
+                    <div class="col text-end ">
+                    </div>
+                    <hr>
+                    <div class="row">
+                        <div class="col  text-start">
+                            <table class="table table-bordered mt-3 mb-3">
+                                <tbody>
+                                    <tr>
+                                        <th class="align-middle">Nội Dung</th>
+                                        <td class="align-middle"><a href="">{{ v.ten_bai_thi }}</a></td>
+                                    </tr>
+                                    <tr>
+                                        <th class="align-middle">Tổng số câu</th>
+                                        <td class="align-middle">40</td>
+                                    </tr>
+                                    <tr>
+                                        <th class="align-middle">Điểm</th>
+                                        <td class="align-middle">8,75</td>
+                                    </tr>
+                                    <tr>
+                                        <th class="align-middle">Hạn nộp</th>
+                                        <td class="align-middle">30/12/2023</td>
+                                    </tr>
+                                    <tr>
+                                        <th class="align-middle">Tình Trạng</th>
+                                        <td v-if="v.tinh_trang == 0" class="align-middle text-danger">Chưa mở</td>
+                                        <td v-else class="align-middle text-success">Đang mở</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                            <hr>
+                            <div class="row">
+                                <div class="col text-end">
+                                    <button class="btn btn-outline-secondary text-dark rounded-pill" data-bs-toggle="modal" data-bs-target="#chitietmodal">Chi tiết bài làm</button>
+                                    <router-link :to="'/client/lam-bai/' + v.id">
+                                        <a v-bind:href="'/client/lam-bai/' + v.id" class="ms-2 btn btn-outline-waring bg-warning text-white rounded-pill">Làm Bài</a>
+                                    </router-link>
+                                </div>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
-    </div>
+        </template>
    </div>
 </div>
     <!-- Modal -->
@@ -115,10 +119,12 @@ export default {
         return {
             list_mon_hoc        : [],
             list_lop_dang_ki    : [],
+            list_bai_thi        : [],
         }
     },
     mounted() {
         this.getDataMonHoc();
+        this.getDataBaiThi();
     },
     methods: {
         getDataMonHoc(){
@@ -130,6 +136,19 @@ export default {
             })
             .then((res)=>{
                 this.list_mon_hoc = res.data.mon_hoc;
+            });
+        },
+
+        getDataBaiThi(){
+            axios
+            .get('http://127.0.0.1:8000/api/client/bai-thi/lay-du-lieu',{
+                    headers: {
+                        Authorization: 'Bearer ' +  localStorage.getItem('token')
+                    }
+            })
+            .then((res)=>{
+                this.list_bai_thi = res.data.data;
+                console.log(this.list_bai_thi);
             });
         },
     },

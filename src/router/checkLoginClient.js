@@ -1,4 +1,3 @@
-// //Sau này đổi tên lại thành Middleware nhé
 import axios from "axios";
 import { createToaster } from "@meforma/vue-toaster";
 const toaster = createToaster({ position: "top-right" });
@@ -10,7 +9,7 @@ export default function(to, from, next) {
             }}
         )
         .then((res) => {
-            localStorage.setItem('ho_ten', res.data.ho_ten);
+            localStorage.setItem('ho_ten', res.data.full_name);
             if(res.status === 200) {
                 next();
             } else {

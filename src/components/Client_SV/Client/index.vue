@@ -146,7 +146,7 @@ export default {
                     }
             })
             .then((res)=>{
-                this.list_bai_thi = res.data.data-lop;
+                this.list_bai_thi = res.data.data;
             });
         },
     },

@@ -25,7 +25,7 @@
                                 <tbody>
                                     <tr>
                                         <th class="align-middle">Nội Dung</th>
-                                        <td class="align-middle"><a href="">{{ v.ten_bai_thi }}</a></td>
+                                        <td class="align-middle"><a href=""></a></td>
                                     </tr>
                                     <tr>
                                         <th class="align-middle">Tổng số câu</th>
@@ -138,7 +138,6 @@ export default {
                 this.list_mon_hoc = res.data.mon_hoc;
             });
         },
-
         getDataBaiThi(){
             axios
             .get('http://127.0.0.1:8000/api/client/bai-thi/lay-du-lieu',{
@@ -147,8 +146,7 @@ export default {
                     }
             })
             .then((res)=>{
-                this.list_bai_thi = res.data.data;
-                console.log(this.list_bai_thi);
+                this.list_bai_thi = res.data.data-lop;
             });
         },
     },

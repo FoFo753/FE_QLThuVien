@@ -86,7 +86,6 @@ export default {
                         console.log(arr[1]);
                         this.checkToken();
                         this.$router.push('/');
-
                     } else {
                         toaster.error('Thông báo<br>' + res.data.message);
                     }

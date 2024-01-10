@@ -46,8 +46,10 @@
                                                 <div class="mb-3">
                                                     <label for="" class="form-label">Lớp</label>
                                                     <select v-model="create_cuoc_thi.id_lop" class="form-select">
-                                                        <option value="1"></option>
-                                                        <option value="0"></option>
+                                                        <template v-for="(v, k) in list_lop_dang_ki">
+                                                            <option v-bind:value="v.id">{{ v.ma_lop }}</option>
+                                                        </template>
+                                                            
                                                     </select>
                                                 </div>
                                             </div>
@@ -134,7 +136,7 @@
                                             <th class="text-center align-middle">{{ k + 1 }}</th>
                                             <td class="text-center align-middle">{{ v.ten_cuoc_thi }}</td>
                                             <td class="text-center align-middle">{{ v.ten_mon_hoc }}</td>
-                                            <td class="text-center align-middle">{{ v.id_lop }}</td>
+                                            <td class="text-center align-middle">{{ v.ma_lop }}</td>
                                             <td class="text-center align-middle">
                                                 <button @:click="doiTrangThai(v)" v-if="v.tinh_trang == 1"
                                                     class="btn btn-outline-success">Hoạt
@@ -294,6 +296,7 @@ const toaster = createToaster({ position: "top-right" });
 export default {
     data() {
         return {
+            list_lop_dang_ki : {},
             key_search: {},
             create_cuoc_thi: {},
             list_cuoc_thi: [],
@@ -307,8 +310,20 @@ export default {
         this.loadDataCuocThi();
         this.loadDataAdmin();
         this.getDatamon();
+        this.loadDataLopDangKi();
     },
     methods: {
+        loadDataLopDangKi(){
+            axios
+                .get('http://127.0.0.1:8000/api/admin/lop-dang-ki/lay-du-lieu', {
+                    headers: {
+                        Authorization: 'Bearer ' +  localStorage.getItem('token_admin')
+                    }})
+                .then((res) => {
+                    this.list_lop_dang_ki = res.data.lop_dang_ki;
+                });
+        },
+        
         getDatamon() {
             axios
                 .get('http://127.0.0.1:8000/api/admin/mon-hoc/lay-mon-hoc',{

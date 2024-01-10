@@ -213,24 +213,33 @@ export default {
     methods: {
         loadDataClient()   {
             axios
-                .get('http://127.0.0.1:8000/api/admin/client/lay-du-lieu', {
-            headers: {
-                Authorization: 'Bearer ' +  localStorage.getItem('token')
-            }})
+                .get('http://127.0.0.1:8000/api/admin/client/lay-du-lieu',{
+                    headers: {
+                        Authorization: 'Bearer ' +  localStorage.getItem('token')
+                    }
+            })
                 .then((res) =>  {
                     this.list_client = res.data.client;
                 });
         },
         saerchClient(){
             axios
-                .post('http://127.0.0.1:8000/api/admin/client/tim-client', this.tim_kiem)
+                .post('http://127.0.0.1:8000/api/admin/client/tim-client', this.tim_kiem,{
+                    headers: {
+                        Authorization: 'Bearer ' +  localStorage.getItem('token')
+                    }
+            })
                 .then((res) =>  {
                     this.list_client = res.data.client;
                 });
         },
         createClient() {
             axios
-                .post('http://127.0.0.1:8000/api/admin/client/tao-client', this.create_client)
+                .post('http://127.0.0.1:8000/api/admin/client/tao-client', this.create_client,{
+                    headers: {
+                        Authorization: 'Bearer ' +  localStorage.getItem('token')
+                    }
+            })
                 .then((res) =>  {
                     if(res.data.status == true) {
                         toaster.success('Thông báo<br>' + res.data.message);
@@ -240,7 +249,11 @@ export default {
         },
         deleteClient() {
             axios
-                .delete('http://127.0.0.1:8000/api/admin/client/xoa-client/'+ this.delete_client.id)
+                .delete('http://127.0.0.1:8000/api/admin/client/xoa-client/'+ this.delete_client.id,{
+                    headers: {
+                        Authorization: 'Bearer ' +  localStorage.getItem('token')
+                    }
+            })
                 .then((res) =>  {
                     if(res.data.status == true) {
                         toaster.success('Thông báo<br>' + res.data.message);
@@ -253,7 +266,11 @@ export default {
         },
         updateClient() {
             axios
-                .put('http://127.0.0.1:8000/api/admin/client/update-client', this.edit_client)
+                .put('http://127.0.0.1:8000/api/admin/client/update-client', this.edit_client,{
+                    headers: {
+                        Authorization: 'Bearer ' +  localStorage.getItem('token')
+                    }
+            })
                 .then((res) =>  {
                     if(res.data.status == true) {
                         toaster.success('Thông báo<br>' + res.data.message);
@@ -266,7 +283,11 @@ export default {
         },
         doiTrangThai(doi) {
             axios
-                .put('http://127.0.0.1:8000/api/admin/client/doi-trang-thai', doi)
+                .put('http://127.0.0.1:8000/api/admin/client/doi-trang-thai', doi,{
+                    headers: {
+                        Authorization: 'Bearer ' +  localStorage.getItem('token')
+                    }
+            })
                 .then((res) =>  {
                     if(res.data.status == true) {
                         toaster.success('Thông báo<br>' + res.data.message);

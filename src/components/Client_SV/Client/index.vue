@@ -123,7 +123,11 @@ export default {
     methods: {
         getDataMonHoc(){
             axios
-            .get('http://127.0.0.1:8000/api/client/mon-hoc/lay-du-lieu')
+            .get('http://127.0.0.1:8000/api/client/mon-hoc/lay-du-lieu',{
+                    headers: {
+                        Authorization: 'Bearer ' +  localStorage.getItem('token')
+                    }
+            })
             .then((res)=>{
                 this.list_mon_hoc = res.data.mon_hoc;
             });

@@ -368,7 +368,7 @@ export default {
             axios
                 .get('http://127.0.0.1:8000/api/admin/cuoc-thi/lay-cuoc-thi', {
                     headers: {
-                        Authorization: 'Bearer ' + localStorage.getItem('token')
+                        Authorization: 'Bearer ' + localStorage.getItem('token_admin')
                     }
                 })
                 .then((res) => {

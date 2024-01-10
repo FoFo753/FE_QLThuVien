@@ -1,5 +1,6 @@
 import { createRouter, createWebHistory } from "vue-router"; // cài vue-router: npm install vue-router@next --save
-import checkLogin from "./checkLogin";
+import checkLoginAdmin from "./checkLogin";
+import checkLoginClient from "./checkLoginClient";
 const routes = [
   {
     path: "/auth",
@@ -27,35 +28,43 @@ const routes = [
   {
     path: "/admin/client",
     component: () => import("../components/Client/index.vue"),
+    beforeEnter: checkLoginAdmin
   },
   {
     path: "/admin",
     component: () => import("../components/Admin/index.vue"),
+    beforeEnter: checkLoginAdmin
   },
   {
     path: "/admin/cuoc-thi",
     component: () => import("../components/CuocThi/index.vue"),
+    beforeEnter: checkLoginAdmin
   },
   {
     path: "/admin/tao-cau-hoi/:id",
     component: () => import("../components/CauTraLoi/index.vue"),
+    beforeEnter: checkLoginAdmin
   },
   {
     path: "/admin/bai-thi",
     component: () => import("../components/BaiThi/index.vue"),
+    beforeEnter: checkLoginAdmin
   },
 
   {
     path: "/admin/mon-hoc",
     component: () => import("../components/MonHoc/index.vue"),
+    beforeEnter: checkLoginAdmin
   },
   {
     path: "/admin/lop-hoc",
     component: () => import("../components/LopHoc/index.vue"),
+    beforeEnter: checkLoginAdmin
   },
   {
     path: "/admin/chi-tiet-lop",
     component: () => import("../components/ChiTietLop/index.vue"),
+    beforeEnter: checkLoginAdmin
   },
   {
   path: "/client",

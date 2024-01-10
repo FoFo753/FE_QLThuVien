@@ -82,7 +82,7 @@ export default {
                     if (res.data.status) {
                         toaster.success('Thông báo<br>' + res.data.message);
                         var arr = res.data.token.split("|");
-                        localStorage.setItem('token', arr[1]);
+                        localStorage.setItem('token_admin', arr[1]);
                         console.log(arr[1]);
                     } else {
                         toaster.error('Thông báo<br>' + res.data.message);

@@ -4,9 +4,9 @@ import { createToaster } from "@meforma/vue-toaster";
 const toaster = createToaster({ position: "top-right" });
 export default function(to, from, next) {
     axios
-        .post('http://127.0.0.1:8000/api/check', {}, {
+        .post('http://127.0.0.1:8000/api/check-admin', {}, {
             headers: {
-                Authorization: 'Bearer ' +  localStorage.getItem('token')
+                Authorization: 'Bearer ' +  localStorage.getItem('token_admin')
             }}
         )
         .then((res) => {

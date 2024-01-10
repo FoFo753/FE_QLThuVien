@@ -287,7 +287,11 @@ export default {
     methods: {
         loadDataAdmin() {
             axios
-                .get('http://127.0.0.1:8000/api/admin/lay-du-lieu')
+                .get('http://127.0.0.1:8000/api/admin/lay-du-lieu', {
+                    headers: {
+                        Authorization: 'Bearer ' + localStorage.getItem('token_admin')
+                    }
+                })
                 .then((res) => {
                     this.list_admin = res.data.admin;
                 });

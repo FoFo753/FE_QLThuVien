@@ -30,32 +30,31 @@
                     <table class="table table-bordered">
                         <thead class="text-center table table-success">
                             <tr>
-                                <th  class="text-center align-middle">#</th>
-                                <th  class="text-center align-middle">Mã Môn Học</th>
-                                <th  class="text-center align-middle">Tên Môn Học</th>
-                                <th  class="text-center align-middle">Tình Trạng</th>
-                                <th  class="text-center align-middle">Option</th>
+                                <th class="text-center align-middle">#</th>
+                                <th class="text-center align-middle">Mã Môn Học</th>
+                                <th class="text-center align-middle">Tên Môn Học</th>
+                                <th class="text-center align-middle">Tình Trạng</th>
+                                <th class="text-center align-middle">Option</th>
                             </tr>
                         </thead>
                         <tbody class="text-center">
                             <tr v-for="(v, k) in list_mon">
-                                <td  class="text-center align-middle">{{ k + 1 }}</td>
-                                <td  class="text-center align-middle">{{ v.ma_mon_hoc }}</td>
-                                <td  class="text-center align-middle">{{ v.ten_mon_hoc }}</td>
-                                <td  class="text-center align-middle">
-                                            <button @:click="doiTrangThai(v)" v-if="v.tinh_trang == 1"
-                                                class="btn btn-outline-success mx-1">Hoạt
-                                                Động</button>
-                                            <button @:click="doiTrangThai(v)" v-else class="btn btn-outline-warning">Tạm
-                                                Dừng</button>
+                                <td class="text-center align-middle">{{ k + 1 }}</td>
+                                <td class="text-center align-middle">{{ v.ma_mon_hoc }}</td>
+                                <td class="text-center align-middle">{{ v.ten_mon_hoc }}</td>
+                                <td class="text-center align-middle">
+                                    <button @:click="doiTrangThai(v)" v-if="v.tinh_trang == 1"
+                                        class="btn btn-outline-success mx-1">Hoạt
+                                        Động</button>
+                                    <button @:click="doiTrangThai(v)" v-else class="btn btn-outline-warning">Tạm
+                                        Dừng</button>
                                 </td>
                                 <td>
                                     <i @:click="Object.assign(update_mon, v)" style="color: rgb(0, 255, 229);"
-                                                class="fa-solid fa-pen-to-square fa-2x mx-2" data-bs-toggle="modal"
-                                                data-bs-target="#cap_nhat"></i>
+                                        class="fa-solid fa-pen-to-square fa-2x mx-2" data-bs-toggle="modal"
+                                        data-bs-target="#cap_nhat"></i>
                                     <i @:click="Object.assign(delete_mon, v)" style="color: red;"
-                                                class="fa-solid fa-trash fa-2x" data-bs-toggle="modal"
-                                                data-bs-target="#xoa"></i>
+                                        class="fa-solid fa-trash fa-2x" data-bs-toggle="modal" data-bs-target="#xoa"></i>
                                 </td>
                             </tr>
                         </tbody>
@@ -65,8 +64,7 @@
         </div>
         <!-- modal -->
         <!-- modal-cập nhật -->
-        <div class="modal fade" id="cap_nhat"  tabindex="-1"
-            aria-labelledby="capnhatlable" aria-hidden="true">
+        <div class="modal fade" id="cap_nhat" tabindex="-1" aria-labelledby="capnhatlable" aria-hidden="true">
             <div class="modal-dialog">
                 <div class="modal-content">
                     <div class="modal-header">
@@ -96,8 +94,7 @@
             </div>
         </div>
         <!-- modal-xóat -->
-        <div class="modal fade" id="xoa"  tabindex="-1"
-            aria-labelledby="xoalable" aria-hidden="true">
+        <div class="modal fade" id="xoa" tabindex="-1" aria-labelledby="xoalable" aria-hidden="true">
             <div class="modal-dialog">
                 <div class="modal-content">
                     <div class="modal-header">
@@ -140,7 +137,11 @@ export default {
     methods: {
         getDatamon() {
             axios
-                .get('http://127.0.0.1:8000/api/admin/mon-hoc/lay-mon-hoc')
+                .get('http://127.0.0.1:8000/api/admin/mon-hoc/lay-mon-hoc', {
+                    headers: {
+                        Authorization: 'Bearer ' + localStorage.getItem('token_admin')
+                    }
+                })
                 .then((res) => {
                     this.list_mon = res.data.mon_hoc;
                 });
@@ -167,7 +168,7 @@ export default {
                     }
                 });
         },
-        updateMon(){
+        updateMon() {
             axios
                 .put('http://127.0.0.1:8000/api/admin/mon-hoc/cap-nhat-mon-hoc', this.update_mon)
                 .then((res) => {
@@ -193,7 +194,7 @@ export default {
                     }
                 });
         }
-        },
+    },
 
 }
 </script>

@@ -313,7 +313,7 @@ export default {
             axios
                 .get('http://127.0.0.1:8000/api/admin/mon-hoc/lay-mon-hoc',{
                     headers: {
-                        Authorization: 'Bearer ' +  localStorage.getItem('token')
+                        Authorization: 'Bearer ' + localStorage.getItem('token_admin')
                     }
             })
                 .then((res) => {

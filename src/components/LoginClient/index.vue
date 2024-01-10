@@ -66,10 +66,13 @@ export default {
     data() {
         return {
             dang_nhap: {},
+            check_token: {},
+            is_login: true,
+            list_token: [],
         }
     },
     mounted() {
-        // this.is_login = true;
+        this.checkToken();
     },
     methods: {
         dangNhap() {
@@ -81,11 +84,31 @@ export default {
                         var arr = res.data.token.split("|");
                         localStorage.setItem('token', arr[1]);
                         console.log(arr[1]);
+                        this.checkToken();
                         this.$router.push('/client');
 
                     } else {
                         toaster.error('Thông báo<br>' + res.data.message);
                     }
+                });
+        },
+        checkToken() {
+            axios
+                .post('http://127.0.0.1:8000/api/check', {}, {
+                    headers: {
+                        Authorization: 'Bearer ' + localStorage.getItem('token')
+                    }
+                })
+                .then((res) => {
+                    console.log(res.data);
+                    localStorage.setItem('ho_ten', res.data.full_name);
+                    if (res.status === 200) {
+                        this.list_token = res.data.list;
+                        this.$router.push('/client');
+                    }
+
+                })
+                .catch(() => {
                 });
         },
     },

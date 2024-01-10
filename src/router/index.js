@@ -18,13 +18,6 @@ const routes = [
     component: () => import("../components/RegisterClient/index.vue"),
     meta: { layout: "account" },
   },
-
-//   {
-//     path: "/lost-password",
-//     component: () => import("../components/QuenMatKhau/index.vue"),
-//     meta: { layout: "new" },
-//   },
-//  //admin
   {
     path: "/admin/client",
     component: () => import("../components/Client/index.vue"),

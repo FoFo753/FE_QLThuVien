@@ -15,11 +15,11 @@ export default function(to, from, next) {
                 next();
             } else {
                 toaster.warning('Thông báo<br>Bạn cần đăng nhập hệ thống trước!');
-                next('/login');
+                next('/auth');
             }
         })
         .catch(() => {
             toaster.warning('Thông báo<br>Bạn cần đăng nhập hệ thống trước!');
-            next('/login');
+            next('/auth');
         });
 }

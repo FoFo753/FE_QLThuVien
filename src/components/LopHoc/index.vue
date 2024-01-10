@@ -232,7 +232,10 @@ export default {
     methods: {
         getDataLop() {
             axios
-                .get('http://127.0.0.1:8000/api/admin/lop-dang-ki/lay-du-lieu')
+                .get('http://127.0.0.1:8000/api/admin/lop-dang-ki/lay-du-lieu', {
+                    headers: {
+                        Authorization: 'Bearer ' +  localStorage.getItem('token_admin')
+                    }})
                 .then((res) => {
                     this.list_lop_dang_ki = res.data.lop_dang_ki;
                 });

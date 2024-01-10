@@ -35,7 +35,7 @@ const routes = [
   },
   {
     path: "/admin/tao-cau-hoi/:id",
-    component: () => import("../components/CauTraLoi/index.vue"),
+    component: () => import("../components/CauHoi/index.vue"),
     beforeEnter: checkLoginAdmin
   },
   {
